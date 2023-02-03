@@ -1,0 +1,87 @@
+<!--Main Footer-->
+<footer class="main-footer" style="background-image:url(assets/images/background/two.jpg);">
+  <div class="auto-container">
+
+      <!--Widgets Section-->
+      <div class="widgets-section">
+          <div class="row clearfix">
+              <!--Big Column-->
+              <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                  <div class="row clearfix">
+
+                      <!--Footer Column-->
+                      <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                          <div class="footer-widget about-widget">
+                              <div class="footer-logo"><figure><a href="index.html"><img src="assets/images/icons/logoDiazCpq2.png" alt="" style="left: -12px;
+                                  position: relative;"></a></figure></div>
+                              <div class="widget-content">
+                                  <div class="text">{{footerSection.diazConstructionsFooterDesc}}</div>
+                                  <ul class="contact-info">
+                                      <li><span class="icon fa fa-map-marker"></span>{{footerSection.address}}</li>
+                                      <li><span class="icon fa fa-phone"></span>{{footerSection.phone}}</li>
+                                      <li><span class="icon fa fa-envelope-o"></span>{{footerSection.email}}</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!--Big Column-->
+              <div class="big-column col-md-6 col-sm-12 col-xs-12">
+                  <div class="row clearfix">
+
+                      <!--Footer Column-->
+                      <div class="footer-column col-md-6 col-sm-6 col-xs-12"></div>
+
+                      <!--Footer Column-->
+                      <div class="footer-column col-md-6 col-sm-6 col-xs-12">
+                          <div class="footer-widget contact-widget">
+                              <h2>Send Us Message</h2>
+                              <div class="widget-content">
+                                  <div class="newsletter-form">
+                                      <form #prospectForm="ngForm" (ngSubmit)="prospectsFooterForm(prospectForm);">
+                                          <div class="form-group">
+                                              <input type="text" name="name" placeholder="Name" name="name" #name="ngModel" ngModel required>
+                                          </div>
+                                          <div class="form-group">
+                                              <input type="email" name="email" placeholder="Email *" name="email" #email="ngModel" ngModel required>
+                                          </div>
+                                          <div class="form-group" style="display: none;">
+                                              <input type="text" placeholder="Phone Number" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" ngModel hidden>
+                                          </div>
+                                          <div class="form-group">
+                                              <textarea name="message" placeholder="Message *" name="message" #message="ngModel" ngModel required></textarea>
+                                          </div>
+                                          <button type="submit" class="theme-btn btn-style-two">Send us</button>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+
+           </div>
+       </div>
+
+  </div>
+
+  <!--Footer Bottom-->
+   <div class="footer-bottom">
+       <div class="auto-container">
+          <div class="clearfix">
+              <div class="pull-left"><div class="copyright">Copyrights &copy; 2023 All Rights Reserved by &ensp; Diaz Constructions</div></div>
+              <div class="pull-right">
+                  <ul class="footer-nav">
+                      <li><a href="#home">Home</a></li>
+                      <li><a href="#welcome-section">About</a></li>
+                      <li><a href="#service-section">Services</a></li>
+                      <li><a href="#contact-us">Contact</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>

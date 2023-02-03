@@ -1,0 +1,498 @@
+<ng-container *ngIf="loader == true">
+  <div class="preloader"></div>
+</ng-container>
+<app-navbar></app-navbar>
+<!-- Hidden Navigation Bar -->
+<section class="hidden-bar right-align">
+
+  <div class="hidden-bar-closer">
+      <button class="btn"><i class="fa fa-close"></i></button>
+  </div>
+
+  <!-- Hidden Bar Wrapper -->
+  <div class="hidden-bar-wrapper">
+
+      <!-- .logo -->
+      <div class="logo text-center">
+          <a href="#"><img style="max-width: 12em;" src="assets/images/icons/logoDiazCpq2.png" alt=""></a>
+      </div><!-- /.logo -->
+
+      <!-- .Side-menu -->
+      <div class="side-menu">
+          <!-- .navigation -->
+          <ul class="navigation">
+              <li class="current"><a href="#home">Home</a></li>
+              <li class=""><a href="#projects">Projects</a></li>
+              <li class=""><a href="#welcome-section">About Us</a></li>
+              <li class=""><a href="#service-section">Services</a></li>
+              <li><a href="#contact-us">Contact</a></li>
+          </ul>
+      </div><!-- /.Side-menu -->
+
+      <div class="social-icons">
+          <ul>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+      </div>
+
+  </div><!-- / Hidden Bar Wrapper -->
+</section>
+<!--Main Slider-->
+<section class="main-slider" id="home">
+  <div class="tp-banner-container">
+      <div class="tp-banner">
+          <ul>
+              <li *ngFor="let slider of activeSlider" data-transition="fade" data-slotamount="1"
+                  data-masterspeed="1000" data-saveperformance="off" data-title="{{slider.imageTitle}}">
+                  <img src="http://127.0.0.1:8000/Storage/images/{{slider.pathImage}}"
+                      alt="{{slider.shortDescription}}" data-bgposition="center top" data-bgfit="cover"
+                      data-bgrepeat="no-repeat">
+
+                  <div class="tp-caption sfl sfb tp-resizeme" data-x="left" data-hoffset="15" data-y="center"
+                      data-voffset="-100" data-speed="1500" data-start="0" data-easing="easeOutExpo"
+                      data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3"
+                      data-endspeed="1200" data-endeasing="Power4.easeIn">
+                      <h2>{{slider.imageTitle}}</h2>
+                  </div>
+
+                  <div class="tp-caption sfl sfb tp-resizeme" data-x="left" data-hoffset="15" data-y="center"
+                      data-voffset="40" data-speed="1500" data-start="500" data-easing="easeOutExpo"
+                      data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3"
+                      data-endspeed="1200" data-endeasing="Power4.easeIn">
+                      <div class="text">{{slider.imageDescription}}</div>
+                  </div>
+
+                  <div class="tp-caption sfr sfb tp-resizeme" data-x="left" data-hoffset="15" data-y="center"
+                      data-voffset="140" data-speed="1500" data-start="1000" data-easing="easeOutExpo"
+                      data-splitin="none" data-splitout="none" data-elementdelay="0.01" data-endelementdelay="0.3"
+                      data-endspeed="1200" data-endeasing="Power4.easeIn"><a href="#service-section"
+                          class="theme-btn btn-style-one">Our Services</a>&nbsp;&nbsp;<a href="#contact-us"
+                          class="theme-btn btn-style-two">Contact Us</a></div>
+
+              </li>
+          </ul>
+          <div class="tp-bannertimer"></div>
+      </div>
+  </div>
+</section>
+
+  <a href="#contact-us" class="float-btn">
+      <div id="popcorn" aria-describedby="tooltip">
+          <img src="assets/images/icons/price-list.png" class="img" alt="">
+      </div>
+  </a>
+  <div id="tooltip" role="tooltip" style="text-align: center;z-index:1000;">
+      <small class="text-center" style="color: #111;"><strong>Click Here and <br>Get a Quote!</strong></small>
+      <div id="arrow" data-popper-arrow></div>
+  </div>
+
+<!--Gallery Section-->
+<section class="gallery-section" id="projects">
+    <div class="auto-container">
+
+          <!--Section Title-->
+          <div class="sec-title-four">
+              <h2>Our Projects</h2>
+          </div>
+
+          <!--Sortable Masonry-->
+          <div class="sortable-masonry">
+              <!--Filter-->
+              <div class="filters text-center">
+                  <div class="icon-box"><span class="fa fa-picture-o"></span></div>
+
+                  <ul class="filter-tabs filter-btns clearfix">
+                      <li class="filter"><a (click)="filter('all')">All Projects</a></li>
+                      <li class="filter" *ngFor="let category of categories"><a
+                          (click)="filter(category.categoryName)">{{category.categoryName}}</a></li>
+                  </ul>
+              </div>
+
+              <div class="text-center">
+                  <div class="container-fluid">
+                      <lightgallery [settings]="settings" [onInit]="onInit">
+                          <a *ngFor="let item of this.store.refined" [attr.data-lg-size]="1400-913" className="gallery-item" [attr.href]="'http://127.0.0.1:8000/Storage/images/'+item.pathImage" style="margin: 5px; margin-bottom: 5px; transition: top 0.4s ease-in-out, left 0.4s ease-in-out;">
+                              <img className="img-responsive" src="http://127.0.0.1:8000/Storage/images/{{item.pathImage}}" style="width: 300px !important; max-height: 170px !important; margin-top: 1em !important;transition: top 0.4s ease-in-out, left 0.4s ease-in-out;">
+                          </a>
+                      </lightgallery>
+                  </div>
+              </div>
+
+          </div><!--End Sortable Masonry-->
+
+      </div>
+
+
+</section>
+
+<!--welcome-section-->
+<section class="welcome-section" id="welcome-section">
+  <div class="auto-container">
+      <div class="row clearfix">
+          <!--welcome-column-->
+          <div class="col-md-6 col-sm-12 col-xs-12 welcome-column">
+              <!--inner-content-->
+              <div class="inner-content wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                  <h2>{{welcomeSection.sectionOne.title}}</h2>
+                  <h3>{{welcomeSection.sectionOne.subtitle}}</h3>
+                  <div class="text">{{welcomeSection.sectionOne.desc}}</div>
+                  <figure class="signature">
+                      <img src="assets/images/icons/signature.png" alt="" />
+                  </figure>
+
+                  <!--author-title-->
+                  <div class="author-title">
+                      <div class="author-info">Jose Diaz, <span>Founder</span></div>
+                      <div class="author-designation">Diaz Constructions.</div>
+                  </div>
+              </div>
+          </div>
+
+          <!--service-column-->
+          <div class="col-md-6 col-sm-12 col-xs-12 service-column">
+              <!--service-block-one-->
+              <div class="service-block-one">
+                  <div class="inner-box">
+                      <!--icon-block-->
+                      <div class="icon-box">
+                          <span class="flaticon-avatar-1"></span>
+                      </div>
+                      <h3>{{welcomeSection.sectionTwo.title}}</h3>
+                      <div class="category"><a href="#">{{welcomeSection.sectionTwo.subtitle}}</a></div>
+                      <div class="text">{{welcomeSection.sectionTwo.desc}}</div>
+                  </div>
+              </div>
+              <!--service-block-one-->
+              <div class="service-block-one">
+                  <div class="inner-box">
+                      <!--icon-block-->
+                      <div class="icon-box">
+                          <span class="flaticon-correct"></span>
+                      </div>
+                      <h3>{{welcomeSection.sectionThree.title}}</h3>
+                      <div class="category"><a href="#">{{welcomeSection.sectionThree.subtitle}}</a></div>
+                      <div class="text">{{welcomeSection.sectionThree.desc}}</div>
+                  </div>
+              </div>
+              <!--service-block-one-->
+              <div class="service-block-one">
+                  <div class="inner-box">
+                      <!--icon-block-->
+                      <div class="icon-box">
+                          <span class="flaticon-compass"></span>
+                      </div>
+                      <h3>{{welcomeSection.sectionFour.title}}</h3>
+                      <div class="category"><a href="#">{{welcomeSection.sectionFour.subtitle}}</a></div>
+                      <div class="text">{{welcomeSection.sectionFour.desc}}</div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</section>
+
+<!--best-service-section-->
+<section class="best-service-section" id="service-section">
+  <div class="auto-container">
+      <!--sec-title-->
+      <div class="sec-title clearfix">
+          <h2 class="pull-left">Our Services</h2>
+      </div>
+
+      <div class="row clearfix">
+
+          <!--service-block-two-->
+          <div class="service-block-two col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              <!--inner-box-->
+              <div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
+                  <div class="image-layer"></div>
+                  <!--icon-box-->
+                  <div class="icon-box">
+                      <span class="flaticon-improvement"></span>
+                  </div>
+
+                  <h3>{{servicesSection.sectionOne.title}}</h3>
+                  <div class="text">{{servicesSection.sectionOne.desc}}</div>
+                  <a href="#" class="read-more">&nbsp;</a>
+
+                  <!--bottom-icon-->
+                  <div class="bottom-icon">
+                      <span class="flaticon-improvement"></span>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="service-block-two col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              <!--inner-box-->
+              <div class="inner-box wow fadeIn" data-wow-delay="400ms" data-wow-duration="1500ms">
+                  <div class="image-layer"></div>
+                  <!--icon-box-->
+                  <div class="icon-box">
+                      <span class="flaticon-parquet"></span>
+                  </div>
+
+                  <h3>{{servicesSection.sectionTwo.title}}</h3>
+                  <div class="text">{{servicesSection.sectionTwo.desc}}</div>
+                  <a href="#" class="read-more">&nbsp;</a>
+
+                  <!--bottom-icon-->
+                  <div class="bottom-icon">
+                      <span class="flaticon-parquet"></span>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="service-block-two col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              <!--inner-box-->
+              <div class="inner-box wow fadeIn" data-wow-delay="800ms" data-wow-duration="1500ms">
+                  <div class="image-layer"></div>
+                  <!--icon-box-->
+                  <div class="icon-box">
+                      <span class="flaticon-window"></span>
+                  </div>
+
+                  <h3>{{servicesSection.sectionThree.title}}</h3>
+                  <div class="text">{{servicesSection.sectionThree.desc}}</div>
+                  <a href="#" class="read-more">&nbsp;</a>
+
+                  <!--bottom-icon-->
+                  <div class="bottom-icon">
+                      <span class="flaticon-window"></span>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="service-block-two col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              <!--inner-box-->
+              <div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
+                  <div class="image-layer"></div>
+                  <!--icon-box-->
+                  <div class="icon-box">
+                      <span class="flaticon-tiles"></span>
+                  </div>
+
+                  <h3>{{servicesSection.sectionFour.title}}</h3>
+                  <div class="text">{{servicesSection.sectionFour.desc}}</div>
+                  <a href="#" class="read-more">&nbsp;</a>
+
+                  <!--bottom-icon-->
+                  <div class="bottom-icon">
+                      <span class="flaticon-tiles"></span>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="service-block-two col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              <!--inner-box-->
+              <div class="inner-box wow fadeIn" data-wow-delay="400ms" data-wow-duration="1500ms">
+                  <div class="image-layer"></div>
+                  <!--icon-box-->
+                  <div class="icon-box">
+                      <span class="flaticon-two"></span>
+                  </div>
+
+                  <h3>{{servicesSection.sectionFive.title}}</h3>
+                  <div class="text">{{servicesSection.sectionFive.desc}}</div>
+                  <a href="#" class="read-more">&nbsp;</a>
+
+                  <!--bottom-icon-->
+                  <div class="bottom-icon">
+                      <span class="flaticon-dinner"></span>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="service-block-two col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              <!--inner-box-->
+              <div class="inner-box wow fadeIn" data-wow-delay="800ms" data-wow-duration="1500ms">
+                  <div class="image-layer"></div>
+                  <!--icon-box-->
+                  <div class="icon-box">
+                      <span class="flaticon-bright-lightbulb"></span>
+                  </div>
+
+                  <h3>{{servicesSection.sectionSix.title}}</h3>
+                  <div class="text">{{servicesSection.sectionSix.desc}}</div>
+                  <a href="#" class="read-more">&nbsp;</a><br><br>
+
+                  <!--bottom-icon-->
+                  <div class="bottom-icon">
+                      <span class="flaticon-bright-lightbulb"></span>
+                  </div>
+
+              </div>
+          </div>
+
+
+      </div>
+  </div>
+</section>
+
+<!--call-to-action-->
+<section class="call-to-action" style="background-image:url(assets/images/background/first.jpg);">
+  <div class="auto-container">
+      <div class="row">
+          <div class="text">Hey! have we worked for you before?</div>
+          <h2>Would you like to tell others about your experience with Diaz Constructions?</h2>
+
+          <a class="theme-btn btn-style-one" target="_blank" href="{{NOMBRE_HOST}}leave-review">Leave us a Review!</a>
+          <!-- <a class="theme-btn btn-style-two" href="#contact-us">Contact Us</a> -->
+
+      </div>
+  </div>
+</section>
+
+<!--default-two-column-->
+<section class="default-two-column" id="contact-us">
+  <div class="auto-container">
+      <div class="row clearfix">
+
+          <div class="column spec-column col-md-6 col-sm-12">
+              <!--sec-title-three-->
+              <div class="sec-title-three">
+                  <div class="sub-title">Diaz Constructions</div>
+                  <h2>{{characteristicsSection.sectionOne.title}}</h2>
+              </div>
+              <div class="text">{{characteristicsSection.sectionOne.desc}}</div>
+              <!--specs-->
+              <div class="specs clearfix">
+                  <div class="row clearfix">
+                      <!--spec-block-->
+                      <div class="spec-block col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                          <!--spec-block-->
+                          <div class="inner-box">
+                              <!--icon-box-->
+                              <div class="icon-box">
+                                  <span class="flaticon-improvement"></span>
+                              </div>
+                              <h3>{{characteristicsSection.sectionTwo.title}}</h3>
+                              <div class="text">{{characteristicsSection.sectionTwo.desc}}</div>
+                          </div>
+                      </div>
+
+                      <div class="spec-block col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                          <!--spec-block-->
+                          <div class="inner-box">
+                              <!--icon-box-->
+                              <div class="icon-box">
+                                  <span class="flaticon-fabric"></span>
+                              </div>
+                              <h3>{{characteristicsSection.sectionThree.title}}</h3>
+                              <div class="text">{{characteristicsSection.sectionThree.desc}}</div>
+                          </div>
+                      </div>
+
+                      <div class="spec-block col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                          <!--spec-block-->
+                          <div class="inner-box">
+                              <!--icon-box-->
+                              <div class="icon-box">
+                                  <span class="flaticon-layers"></span>
+                              </div>
+                              <h3>{{characteristicsSection.sectionFour.title}}</h3>
+                              <div class="text">{{characteristicsSection.sectionFour.desc}}</div>
+                          </div>
+                      </div>
+
+                      <div class="spec-block col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                          <!--spec-block-->
+                          <div class="inner-box">
+                              <!--icon-box-->
+                              <div class="icon-box">
+                                  <span class="flaticon-dinner"></span>
+                              </div>
+                              <h3>{{characteristicsSection.sectionFive.title}}</h3>
+                              <div class="text">{{characteristicsSection.sectionFive.desc}}</div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="column form-column col-md-6 col-sm-12">
+              <!--sec-title-three-->
+              <div class="sec-title-three">
+                  <div class="sub-title">Request for</div>
+                  <h2>Free Quotation</h2>
+              </div>
+
+              <!--form-box-->
+              <div class="form-box default-form wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                  <div class="contact-form default-form">
+                      <form #prospectForm="ngForm" (ngSubmit)="prospectsForm(prospectForm);">
+                          <div class="row clearfix">
+
+                              <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                  <input type="text" placeholder="Your Name *" id="name" name="name" #name="ngModel"
+                                      ngModel required>
+                              </div>
+
+                              <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                  <input type="email" placeholder="Your Mail *" id="email" name="email"
+                                      #mail="ngModel" ngModel required>
+                              </div>
+
+                              <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                  <input type="text" placeholder="Phone Number" id="phoneNumber" name="phoneNumber"
+                                      #phoneNumber="ngModel" ngModel>
+                              </div>
+
+                              <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                  <textarea placeholder="Message *" id="message" name="message" #message="ngModel"
+                                      ngModel></textarea>
+                              </div>
+                              <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                  <button type="submit" class="theme-btn btn-style-two">Get Quote</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</section>
+
+<!--testimonial-style-one-->
+<section class="testimonial-style-one" style="background-image:url(assets/images/background/two.jpg);">
+  <div class="auto-container">
+      <div class="row">
+          <div class="carousel-outer">
+              <div class="icon fa fa-quote-left"></div>
+              <div class="single-item-carousel">
+                  <owl-carousel-o [options]="testimonialSlider">
+                      <ng-template carouselSlide *ngFor="let review of activeReviewsList">
+                          <!--Slide Item-->
+                          <div class="slide-item">
+                              <div class="inner-box">
+                                  <div class="slide-text">{{review.description}}</div>
+                                  <!--auther-info-->
+                                  <div class="auther-info">
+                                      <div class="image"><img src="assets/images/icons/customer.png" alt="" /></div>
+                                      <div class="auther-name">{{review.name}}</div>
+                                      <div class="designation">{{review.workDone}}</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </ng-template>
+                  </owl-carousel-o>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
+<!-- <div class="scroll-to-top scroll-to-target" data-target=".main-header"><span class="fa fa-long-arrow-up"></span></div> -->

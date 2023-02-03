@@ -1,0 +1,25 @@
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.4/css/lightgallery.css');
+@import url('https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.4/css/lg-zoom.css');
+
+.filters .filter {
+    padding-bottom: 5px;
+}
+
+.filters .filter a{
+    cursor: pointer;
+}
+
+
+
+.contentGal .masonry-item .inner-box .opened {
+    width: 500px;
+}
+
+.sorteable-masonry .container-fluid .gallery-item {
+    margin: 5px;
+  }
+
+
+  .gallery-item {
+    transition: top 0.4s ease-in-out, left 0.4s ease-in-out;
+  }

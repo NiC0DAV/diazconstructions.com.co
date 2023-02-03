@@ -19,7 +19,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     LoginComponent,
     FooterComponent,
     GalleryComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

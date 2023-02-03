@@ -1,0 +1,17 @@
+<body>
+  <div class="container">
+  <div class="contact-box">
+    <div class="left"></div>
+    <div class="right">
+              <form #reviewForm="ngForm" (ngSubmit)="reviewsForm(reviewForm);">
+                  <h2>Leave a Review</h2>
+                  <input type="text" class="field" placeholder="Your Name" id="name" name="name" #name="ngModel" ngModel required>
+                  <input type="text" class="field" placeholder="Your Email" id="email" name="email" #email="ngModel" ngModel required>
+                  <input type="text" class="field" placeholder="What project do we do for you?" id="workDone" name="workDone" #workDone="ngModel" ngModel required>
+                  <textarea placeholder="Description" class="field" id="description" name="description" #description="ngModel" ngModel required></textarea>
+                  <button type = "submit" class="btn">Send Review</button>
+              </form>
+    </div>
+  </div>
+</div>
+</body>
