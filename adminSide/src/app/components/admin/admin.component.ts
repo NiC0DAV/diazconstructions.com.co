@@ -90,17 +90,17 @@ export class AdminComponent {
 
   ngOnInit() {
     let decodedToken = this.helper.decodeToken(this.token);
-    // if (this.token && decodedToken.rol == "2" && decodedToken.status == "2") {
-    //   if (this.helper.isTokenExpired(this.token)) {
-    //     localStorage.clear();
-    //     this._router.navigate(['login']);
-    //   } else {
-    //     this.sessionId = decodedToken.sub;
-    //     this._router.navigate(['']);
-    //   }
-    // } else {
-    //   this._router.navigate(['login']);
-    // }
+    if (this.token && decodedToken.rol == "2" && decodedToken.status == "2") {
+      if (this.helper.isTokenExpired(this.token)) {
+        localStorage.clear();
+        this._router.navigate(['login']);
+      } else {
+        this.sessionId = decodedToken.sub;
+        this._router.navigate(['']);
+      }
+    } else {
+      this._router.navigate(['login']);
+    }
   }
 
   ngAfterViewInit() {
@@ -132,7 +132,7 @@ export class AdminComponent {
 
   fetchInformationById(id:any) {
     this._informationService.fetchInformationById(id, this.token).subscribe(
-      (response: any) => { 
+      (response: any) => {
         this.action = 'edit';
         this.content = response.data;
         this.newStat = this.content.status;
@@ -153,7 +153,7 @@ export class AdminComponent {
 
   updateInformation(id: any){
     // console.log(this.content.name);
-    let data = 
+    let data =
     {
       "name": this.content.name,
       "status": this.newStat,
@@ -177,7 +177,7 @@ export class AdminComponent {
               "title": this.welcomeSection.sectionFour.title,
               "subtitle": this.welcomeSection.sectionFour.subtitle,
               "desc": this.welcomeSection.sectionFour.desc
-          } 
+          }
       },
       "servicesSection": {
           "sectionOne": {
@@ -286,7 +286,7 @@ export class AdminComponent {
 
   newInformation(newInfoReg: any) {
     console.log(newInfoReg);
-    let data = 
+    let data =
     {
       "name": newInfoReg.name,
       "welcomeSection": {
@@ -309,7 +309,7 @@ export class AdminComponent {
               "title": newInfoReg.WsectionFourTitle,
               "subtitle": newInfoReg.WsectionFourSubtitle,
               "desc": newInfoReg.WsectionFourDesc
-          } 
+          }
       },
       "servicesSection": {
           "sectionOne": {
@@ -476,7 +476,7 @@ export class AdminComponent {
             icon: 'error',
             title: error.error.message
           });
-    
+
         }
       );
     }
@@ -592,7 +592,7 @@ export class AdminComponent {
         for (let clave in this.images) {
           let val = this.images[clave];
           if (val.imageStatus == '2') {
-            this.activeGallery[clave] = this.images[clave]; 
+            this.activeGallery[clave] = this.images[clave];
           }
         }
        this.galleryQuantity = Object.keys(this.activeGallery).length;
@@ -703,7 +703,7 @@ export class AdminComponent {
         for (let clave in this.users) {
           let val = this.users[clave];
           if (val.status == '1' || val.status == '2') {
-            this.usersList[clave] = this.users[clave]; 
+            this.usersList[clave] = this.users[clave];
           }
         }
 
