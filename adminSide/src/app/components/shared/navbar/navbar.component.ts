@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+
+  public module: String = '';
+
+  @Output() messageEvent = new EventEmitter<String>();
+
+  ngDoCheck() {
+    if (this.module != '') {
+      this.sendData();
+    }
+  }
+  sendData() {
+    this.messageEvent.emit(this.module);
+  }
 
 }

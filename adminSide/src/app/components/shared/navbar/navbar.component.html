@@ -1,1 +1,37 @@
-<p>navbar works!</p>
+<div class="page-wrapper-inner">
+
+    <!-- Navbar Custom Menu -->
+    <div class="navbar-custom-menu">
+
+        <div class="container-fluid">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu list-unstyled">
+
+                    <li class="has-submenu">
+                        <a href="#">
+                            <i class="mdi mdi-monitor"></i>
+                            Web Administration
+                        </a>
+                        <ul class="submenu">
+                            <li><a (click)="module = 'information'" style="cursor: pointer;">Information Management</a></li>
+                            <li><a (click)="module = 'categories'" style="cursor: pointer;">Categories Management</a></li>
+                            <li><a (click)="module = 'gallery'" style="cursor: pointer;">Gallery Management</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu" style="cursor: pointer;">
+                        <a (click)="module = 'prospects'"><i class="mdi mdi-apps"></i>Prospects Administration</a>
+                    </li>
+                    <li class="has-submenu" style="cursor: pointer;">
+                        <a (click)="module = 'users'"><i class="mdi mdi-buffer"></i>Users Management</a>
+                    </li>
+                    <li class="has-submenu" style="cursor: pointer;">
+                        <a (click)="module = 'reviews'" ><i class="mdi mdi-cards-playing-outline"></i>Reviews Management</a>
+                    </li>
+                </ul>
+                <!-- End navigation menu -->
+            </div> <!-- end navigation -->
+        </div> <!-- end container-fluid -->
+    </div>
+    <!-- end left-sidenav-->
+</div>

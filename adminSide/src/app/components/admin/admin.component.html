@@ -1,1 +1,1589 @@
-<p>admin works!</p>
+<!-- Top Bar End -->
+<div class="page-wrapper-img">
+    <div class="page-wrapper-img-inner">
+        <div class="sidebar-user media">
+            <img src="assets/images/users/user-1.jpg" alt="user" class="rounded-circle img-thumbnail mb-1">
+            <span class="online-icon"><i class="mdi mdi-record text-success"></i></span>
+            <div class="media-body">
+                <h5 class="text-light">Mr. User </h5>
+                <ul class="list-unstyled list-inline mb-0 mt-2">
+                    <li class="list-inline-item">
+                        <a href="#" class=""><i class="mdi mdi-account text-light"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" (click)="killSession();" class=""><i class="mdi mdi-power text-danger"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <!-- <div class="float-right align-item-center mt-2">
+                        <button class="btn btn-info px-4 align-self-center report-btn">Create Report</button>
+                    </div> -->
+                    <h4 class="page-title mb-2"><i class="mdi mdi-monitor mr-2"></i>Dashboard</h4>
+                    <div class="">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Diaz Constructions</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
+                            <!-- <li class="breadcrumb-item active">Dashboard</li> -->
+                        </ol>
+                    </div>
+                </div><!--end page title box-->
+            </div><!--end col-->
+        </div><!--end row-->
+        <!-- end page title end breadcrumb -->
+    </div><!--end page-wrapper-img-inner-->
+</div><!--end page-wrapper-img-->
+
+<div class="page-wrapper">
+    <app-navbar (messageEvent)="receiveData($event)"></app-navbar>
+    <!--end page-wrapper-inner -->
+    <!-- Page Content-->
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card overflow-hidden">
+                        <div class="card-body bg-gradient1">
+                            <div class="">
+                                <div class="card-icon">
+                                    <i class="far fa-user"></i>
+                                </div>
+                                <h2 class="font-weight-bold text-white">{{galleryQuantity || 0}}</h2>
+                                <p class="text-white mb-0 font-16">Current Gallery</p>
+                            </div>
+                        </div>
+                        <div class="card-body dash-info-carousel">
+                            <div id="carousel_best_saler" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="text-center">
+                                            <img src="assets/images/01.jpg" alt="user"
+                                                class="rounded-circle thumb-xl img-thumbnail mb-1">
+                                            <h5>Current Gallery</h5>
+                                            <p class="mb-0 text-muted">Here you can see the gallery that is being shown
+                                                on the website.
+                                            </p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" *ngFor="let image of activeGallery;">
+                                        <div class="text-center">
+                                            <img src="http://127.0.0.1:8000/Storage/images/{{image.pathImage}}" alt="{{image.shortDescription}}"
+                                                class="rounded-circle thumb-xl img-thumbnail mb-1">
+                                            <h5>{{image.imageTitle}}</h5>
+                                            <p class="font-12 text-muted">{{image.shortDescription}}</p>
+                                            <p class="mb-0 text-muted">{{image.imageDescription}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carousel_best_saler" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel_best_saler" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+
+                <div class="col-lg-6">
+                    <div class="card overflow-hidden">
+                        <div class="card-body bg-gradient3">
+                            <div class="">
+                                <div class="card-icon">
+                                    <i class="far fa-smile"></i>
+                                </div>
+                                <h2 class="font-weight-bold text-white">58</h2>
+                                <p class="text-white mb-0 font-16">Reviews</p>
+                            </div>
+                        </div><!--end card-body-->
+                        <div class="card-body dash-info-carousel">
+                            <div id="carousel_review" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="media">
+                                            <img src="assets/images/flags/us_flag.jpg"
+                                                class="mr-2 thumb-xs rounded-circle" alt="...">
+                                            <div class="media-body align-self-center">
+                                                <!-- <h6 class="m-0">John Doe</h6> -->
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <br>
+                                            <h3 class="m-0">John Doe</h3>
+                                            <br>
+                                            <p class="mb-1 text-muted">Work Done</p>
+                                            <p class="mb-1 text-muted">There are many variations of passages of Lorem
+                                                Ipsum available,
+                                                but the majority have suffered alteration in some form, by injected
+                                                humour, or randomised
+                                                variations of passages of Lorem Ipsum available.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <div class="media">
+                                            <img src="assets/images/flags/us_flag.jpg"
+                                                class="mr-2 thumb-xs rounded-circle" alt="...">
+                                            <div class="media-body align-self-center">
+                                                <!-- <h6 class="m-0">John Doe</h6> -->
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <br>
+                                            <h3 class="m-0">John Doe</h3>
+                                            <br>
+                                            <p class="mb-1 text-muted">Work Done</p>
+                                            <p class="mb-1 text-muted">There are many variations of passages of Lorem
+                                                Ipsum available,
+                                                but the majority have suffered alteration in some form, by injected
+                                                humour, or randomised
+                                                variations of passages of Lorem Ipsum available.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carousel_review" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel_review" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+            </div>
+            <ng-container *ngIf="dataChild == 'information'">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body new-user order-list">
+                                <h4 class="header-title mt-0 mb-3">Web Information Management</h4>
+                                <div class="container-fluid">
+                                    <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <label class="col-form-label text-right">Select the information</label>
+                                            <div class="col-md-5">
+                                                <select class="form-control" [(ngModel)]="informationId">
+                                                    <option value = ''>Select</option>
+                                                    <option [value]="content.id" *ngFor="let content of contents">{{content.name}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-warning" (click)="fetchInformationById(informationId)">Edit</button>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger" (click)="deleteInformation(informationId)">Delete</button>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-success" (click)="action = 'new'">New</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <ng-container *ngIf='action === "edit"'>
+                                            <div class="container">
+                                                <form #updateInfoForm="ngForm" (ngSubmit)="updateInformation(informationId);">
+                                                    <div class="container">
+                                                        <div class="col-md-12 row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="setInformationTitle">Information Name</label>
+                                                                    <input type="text" class="form-control" id="setInformationTitle" name="setInformationTitle" #setInformationTitle="ngModel" [(ngModel)]="content.name" required="" pattern="[a-z A-Z]+">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group mb-0 row">
+                                                                    <label class="col-md-4 my-2 control-label">Information Status</label>
+                                                                    <div class="col-md-9">
+                                                                        <ng-container *ngIf="newStat == '2'">
+                                                                            <button type="button" class="btn btn-success" disabled>Currently {{status}}</button>
+                                                                            &nbsp;
+                                                                            <button type="button" class="btn btn-danger" (click)="changeStat('1')">Deactivate</button>
+                                                                        </ng-container>
+                                                                        <ng-container *ngIf="newStat == '1'">
+                                                                            <button type="button" class="btn btn-success" (click)="changeStat('2')">Activate</button>
+                                                                            &nbsp;
+                                                                            <button type="button" class="btn btn-danger" disabled>Currently {{status}}</button>
+                                                                        </ng-container>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="accordion" id="accordionExample">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingOne">
+                                                                    <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                        Welcome Section
+                                                                    </button>
+                                                                    </h1>
+                                                                </div>
+                                                            
+                                                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                    <div class="card-body">
+                                                                        <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section One Title</label>
+                                                                                <input type="text" class="form-control" id="sectionOneTitle" name="sectionOneTitle" #sectionOneTitle="ngModel" [(ngModel)]="welcomeSection.sectionOne.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionSubitle">Section One Subtitle</label>
+                                                                                <input type="text" class="form-control" id="sectionOneSubitle" name="sectionOneSubitle" #sectionOneSubitle="ngModel" [(ngModel)]="welcomeSection.sectionOne.subtitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section One Description</label>
+                                                                                <textarea class="form-control" name="sectionOneDesc" id="sectionOneDesc" #sectionOneDesc="ngModel" [(ngModel)]="welcomeSection.sectionOne.desc" rows="5"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Two</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Two Title</label>
+                                                                                <input type="text" class="form-control" id="sectionTwoTitle" name="sectionTwoTitle" #sectionTwoTitle="ngModel" [(ngModel)]="welcomeSection.sectionTwo.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionSubitle">Section Two Subtitle</label>
+                                                                                <input type="text" class="form-control" id="sectionTwoSubitle" name="sectionTwoSubitle" #sectionTwoSubitle="ngModel" [(ngModel)]="welcomeSection.sectionTwo.subtitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Two Description</label>
+                                                                                <textarea class="form-control" name="sectionTwoDesc" id="sectionTwoDesc" #sectionTwoDesc="ngModel" [(ngModel)]="welcomeSection.sectionTwo.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Three</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Three Title</label>
+                                                                                <input type="text" class="form-control" id="sectionThreeTitle" name="sectionThreeTitle" #sectionThreeTitle="ngModel" [(ngModel)]="welcomeSection.sectionThree.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionSubitle">Section Three Subtitle</label>
+                                                                                <input type="text" class="form-control" id="sectionThreeSubitle" name="sectionThreeSubitle" #sectionThreeSubitle="ngModel" [(ngModel)]="welcomeSection.sectionThree.subtitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Three Description</label>
+                                                                                <textarea class="form-control" name="sectionThreeDesc" id="sectionThreeDesc" #sectionThreeDesc="ngModel" [(ngModel)]="welcomeSection.sectionThree.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Four</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Four Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFourTitle" name="sectionFourTitle" #sectionFourTitle="ngModel" [(ngModel)]="welcomeSection.sectionFour.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionSubitle">Section Four Subtitle</label>
+                                                                                <input type="text" class="form-control" id="sectionFourSubitle" name="sectionFourSubitle" #sectionFourSubitle="ngModel" [(ngModel)]="welcomeSection.sectionFour.subtitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Four Description</label>
+                                                                                <textarea class="form-control" name="sectionFourDesc" id="sectionFourDesc" #sectionFourDesc="ngModel" [(ngModel)]="welcomeSection.sectionFour.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingTwo">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                        Services Section
+                                                                    </button>
+                                                                </h1>
+                                                                </div>
+                                                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section One Title</label>
+                                                                                <input type="text" class="form-control" id="sectionOneTitleServices" name="sectionOneTitleServices" #sectionOneTitleServices="ngModel" [(ngModel)]="servicesSection.sectionOne.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section One Description</label>
+                                                                                <textarea class="form-control" name="sectionOneDescServices" id="sectionOneDescServices" #sectionOneDescServices="ngModel" [(ngModel)]="servicesSection.sectionOne.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Two</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Two Title</label>
+                                                                                <input type="text" class="form-control" id="sectionTwoTitleServices" name="sectionTwoTitleServices" #sectionTwoTitleServices="ngModel" [(ngModel)]="servicesSection.sectionTwo.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Two Description</label>
+                                                                                <textarea class="form-control" name="sectionTwoDescServices" id="sectionTwoDescServices" #sectionTwoDescServices="ngModel" [(ngModel)]="servicesSection.sectionTwo.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Three</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Three Title</label>
+                                                                                <input type="text" class="form-control" id="sectionThreeTitleServices" name="sectionThreeTitleServices" #sectionThreeTitleServices="ngModel" [(ngModel)]="servicesSection.sectionThree.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Three Description</label>
+                                                                                <textarea class="form-control" name="sectionThreeDescServices" id="sectionThreeDescServices" #sectionThreeDescServices="ngModel" [(ngModel)]="servicesSection.sectionThree.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Four</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Four Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFourTitleServices" name="sectionFourTitleServices" #sectionFourTitleServices="ngModel" [(ngModel)]="servicesSection.sectionFour.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Four Description</label>
+                                                                                <textarea class="form-control" name="sectionFourDescServices" id="sectionFourDescServices" #sectionFourDescServices="ngModel" [(ngModel)]="servicesSection.sectionFour.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Five</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Five Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFiveTitleServices" name="sectionFiveTitleServices" #sectionFiveTitleServices="ngModel" [(ngModel)]="servicesSection.sectionFive.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Five Description</label>
+                                                                                <textarea class="form-control" name="sectionFiveDescServices" id="sectionFiveDescServices" #sectionFiveDescServices="ngModel" [(ngModel)]="servicesSection.sectionFive.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Six</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Six Title</label>
+                                                                                <input type="text" class="form-control" id="sectionSixTitleServices" name="sectionSixTitleServices" #sectionSixTitleServices="ngModel" [(ngModel)]="servicesSection.sectionSix.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Six Description</label>
+                                                                                <textarea class="form-control" name="sectionSixDescServices" id="sectionSixDescServices" #sectionSixDescServices="ngModel" [(ngModel)]="servicesSection.sectionSix.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingThree">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                        Characteristics Section
+                                                                    </button>
+                                                                </h1>
+                                                                </div>
+                                                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section One Title</label>
+                                                                                <input type="text" class="form-control" id="sectionOneTitleCharacteristics" name="sectionOneTitleCharacteristics" #sectionOneTitleCharacteristics="ngModel" [(ngModel)]="characteristicsSection.sectionOne.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section One Description</label>
+                                                                                <textarea class="form-control" name="sectionOneDescCharacteristics" id="sectionOneDescCharacteristics" #sectionOneDescServices="ngModel" [(ngModel)]="characteristicsSection.sectionOne.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Two</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Two Title</label>
+                                                                                <input type="text" class="form-control" id="sectionTwoTitleServices" name="sectionTwoTitleServices" #sectionTwoTitleServices="ngModel" [(ngModel)]="characteristicsSection.sectionTwo.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Two Description</label>
+                                                                                <textarea class="form-control" name="sectionTwoDescServices" id="sectionTwoDescServices" #sectionTwoDescServices="ngModel" [(ngModel)]="characteristicsSection.sectionTwo.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Three</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Three Title</label>
+                                                                                <input type="text" class="form-control" id="sectionThreeTitleServices" name="sectionThreeTitleServices" #sectionThreeTitleServices="ngModel" [(ngModel)]="characteristicsSection.sectionThree.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Three Description</label>
+                                                                                <textarea class="form-control" name="sectionThreeDescServices" id="sectionThreeDescServices" #sectionThreeDescServices="ngModel" [(ngModel)]="characteristicsSection.sectionThree.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Four</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Four Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFourTitleServices" name="sectionFourTitleServices" #sectionFourTitleServices="ngModel" [(ngModel)]="characteristicsSection.sectionFour.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Four Description</label>
+                                                                                <textarea class="form-control" name="sectionFourDescServices" id="sectionFourDescServices" #sectionFourDescServices="ngModel" [(ngModel)]="characteristicsSection.sectionFour.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Five</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Five Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFiveTitleServices" name="sectionFiveTitleServices" #sectionFiveTitleServices="ngModel" [(ngModel)]="characteristicsSection.sectionFive.title" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Five Description</label>
+                                                                                <textarea class="form-control" name="sectionFiveDescServices" id="sectionFiveDescServices" #sectionFiveDescServices="ngModel" [(ngModel)]="characteristicsSection.sectionFive.desc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingFour">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                                        Footer Section
+                                                                    </button>
+                                                                </h1>
+                                                                </div>
+                                                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="contactEmail">Contact Email</label>
+                                                                                <input type="email" class="form-control" id="contactEmail" name="contactEmail" #contactEmail="ngModel" [(ngModel)]="footerSection.email" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="contactPhone">Contact Phone</label>
+                                                                                <input type="text" class="form-control" name="contactPhone" id="contactPhone" #contactPhone="ngModel" [(ngModel)]="footerSection.phone" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="address">Address</label>
+                                                                                <input type="text" class="form-control" name="address" id="address" #address="ngModel" [(ngModel)]="footerSection.address" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="diazConstructionsFooterDesc">Footer Description</label>
+                                                                                <input type="text" class="form-control" name="diazConstructionsFooterDesc" id="diazConstructionsFooterDesc" #diazConstructionsFooterDesc="ngModel" [(ngModel)]="footerSection.diazConstructionsFooterDesc" required>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingFive">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                                        Social Media URL
+                                                                    </button>
+                                                                </h1>
+                                                                </div>
+                                                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="facebookUrl">Facebook URL</label>
+                                                                                <input type="text" class="form-control" id="facebookUrl" name="facebookUrl" #facebookUrl="ngModel" [(ngModel)]="socialMedia.facebookUrl" required="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="instagramUrl">Instagram URL</label>
+                                                                                <input type="text" class="form-control" id="instagramUrl" name="instagramUrl" #instagramUrl="ngModel" [(ngModel)]="socialMedia.instagramUrl" required="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="phoneNumber">Phone Number </label>
+                                                                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" [(ngModel)]="socialMedia.whatsappNumber" required="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input style="max-width: 28em;" type="submit" class="btn btn-success waves-effect waves-light btn-lg btn-block" value="Save Information">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf='action === "new"'>
+                                            <div class="container">
+                                                <form #newRegInfoForm="ngForm" (ngSubmit)="newInformation(newInfoReg);">
+                                                    <div class="container">
+                                                        <div class="col-md-12 row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="setInformationTitle">Information Name</label>
+                                                                    <input type="text" class="form-control" id="setInformationTitle" name="setInformationTitle" #setInformationTitle="ngModel" [(ngModel)]="newInfoReg.name" required="" pattern="[a-z A-Z]+">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="accordion" id="accordionExample">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingOne">
+                                                                    <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                        Welcome Section
+                                                                    </button>
+                                                                    </h1>
+                                                                </div>
+                                                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                    <div class="card-body">
+                                                                        <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section One Title</label>
+                                                                                <input type="text" class="form-control" id="sectionOneTitle" name="sectionOneTitle" #sectionOneTitle="ngModel" [(ngModel)]="newInfoReg.WsectionOneTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionSubitle">Section One Subtitle</label>
+                                                                                <input type="text" class="form-control" id="sectionOneSubitle" name="sectionOneSubitle" #sectionOneSubitle="ngModel" [(ngModel)]="newInfoReg.WsectionOneSubtitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section One Description</label>
+                                                                                <textarea class="form-control" name="sectionOneDesc" id="sectionOneDesc" #sectionOneDesc="ngModel" [(ngModel)]="newInfoReg.WsectionOneDesc" rows="5"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Two</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Two Title</label>
+                                                                                <input type="text" class="form-control" id="sectionTwoTitle" name="sectionTwoTitle" #sectionTwoTitle="ngModel" [(ngModel)]="newInfoReg.WsectionTwoTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionSubitle">Section Two Subtitle</label>
+                                                                                <input type="text" class="form-control" id="sectionTwoSubitle" name="sectionTwoSubitle" #sectionTwoSubitle="ngModel" [(ngModel)]="newInfoReg.WsectionTwoSubtitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Two Description</label>
+                                                                                <textarea class="form-control" name="sectionTwoDesc" id="sectionTwoDesc" #sectionTwoDesc="ngModel" [(ngModel)]="newInfoReg.WsectionTwoDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Three</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Three Title</label>
+                                                                                <input type="text" class="form-control" id="sectionThreeTitle" name="sectionThreeTitle" #sectionThreeTitle="ngModel" [(ngModel)]="newInfoReg.WsectionThreeTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionSubitle">Section Three Subtitle</label>
+                                                                                <input type="text" class="form-control" id="sectionThreeSubitle" name="sectionThreeSubitle" #sectionThreeSubitle="ngModel" [(ngModel)]="newInfoReg.WsectionThreeSubtitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Three Description</label>
+                                                                                <textarea class="form-control" name="sectionThreeDesc" id="sectionThreeDesc" #sectionThreeDesc="ngModel" [(ngModel)]="newInfoReg.WsectionThreeDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Four</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Four Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFourTitle" name="sectionFourTitle" #sectionFourTitle="ngModel" [(ngModel)]="newInfoReg.WsectionFourTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionSubitle">Section Four Subtitle</label>
+                                                                                <input type="text" class="form-control" id="sectionFourSubitle" name="sectionFourSubitle" #sectionFourSubitle="ngModel" [(ngModel)]="newInfoReg.WsectionFourSubtitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Four Description</label>
+                                                                                <textarea class="form-control" name="sectionFourDesc" id="sectionFourDesc" #sectionFourDesc="ngModel" [(ngModel)]="newInfoReg.WsectionFourDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingTwo">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                        Services Section
+                                                                    </button>
+                                                                </h1>
+                                                                </div>
+                                                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section One Title</label>
+                                                                                <input type="text" class="form-control" id="sectionOneTitleServices" name="sectionOneTitleServices" #sectionOneTitleServices="ngModel" [(ngModel)]="newInfoReg.SsectionOneTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section One Description</label>
+                                                                                <textarea class="form-control" name="sectionOneDescServices" id="sectionOneDescServices" #sectionOneDescServices="ngModel" [(ngModel)]="newInfoReg.SsectionOneDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Two</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Two Title</label>
+                                                                                <input type="text" class="form-control" id="sectionTwoTitleServices" name="sectionTwoTitleServices" #sectionTwoTitleServices="ngModel" [(ngModel)]="newInfoReg.SsectionTwoTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Two Description</label>
+                                                                                <textarea class="form-control" name="sectionTwoDescServices" id="sectionTwoDescServices" #sectionTwoDescServices="ngModel" [(ngModel)]="newInfoReg.SsectionTwoDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Three</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Three Title</label>
+                                                                                <input type="text" class="form-control" id="sectionThreeTitleServices" name="sectionThreeTitleServices" #sectionThreeTitleServices="ngModel" [(ngModel)]="newInfoReg.SsectionThreeTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Three Description</label>
+                                                                                <textarea class="form-control" name="sectionThreeDescServices" id="sectionThreeDescServices" #sectionThreeDescServices="ngModel" [(ngModel)]="newInfoReg.SsectionThreeDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Four</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Four Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFourTitleServices" name="sectionFourTitleServices" #sectionFourTitleServices="ngModel" [(ngModel)]="newInfoReg.SsectionFourTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Four Description</label>
+                                                                                <textarea class="form-control" name="sectionFourDescServices" id="sectionFourDescServices" #sectionFourDescServices="ngModel" [(ngModel)]="newInfoReg.SsectionFourDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Five</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Five Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFiveTitleServices" name="sectionFiveTitleServices" #sectionFiveTitleServices="ngModel" [(ngModel)]="newInfoReg.SsectionFiveTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Five Description</label>
+                                                                                <textarea class="form-control" name="sectionFiveDescServices" id="sectionFiveDescServices" #sectionFiveDescServices="ngModel" [(ngModel)]="newInfoReg.SsectionFiveDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Six</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Six Title</label>
+                                                                                <input type="text" class="form-control" id="sectionSixTitleServices" name="sectionSixTitleServices" #sectionSixTitleServices="ngModel" [(ngModel)]="newInfoReg.SsectionSixTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Six Description</label>
+                                                                                <textarea class="form-control" name="sectionSixDescServices" id="sectionSixDescServices" #sectionSixDescServices="ngModel" [(ngModel)]="newInfoReg.SsectionSixDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingThree">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                        Characteristics Section
+                                                                    </button>
+                                                                </h1>
+                                                                </div>
+                                                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section One Title</label>
+                                                                                <input type="text" class="form-control" id="sectionOneTitleCharacteristics" name="sectionOneTitleCharacteristics" #sectionOneTitleCharacteristics="ngModel" [(ngModel)]="newInfoReg.ChsectionOneTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section One Description</label>
+                                                                                <textarea class="form-control" name="sectionOneDescCharacteristics" id="sectionOneDescCharacteristics" #sectionOneDescServices="ngModel" [(ngModel)]="newInfoReg.ChsectionOneDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Two</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Two Title</label>
+                                                                                <input type="text" class="form-control" id="sectionTwoTitleServices" name="sectionTwoTitleServices" #sectionTwoTitleServices="ngModel" [(ngModel)]="newInfoReg.ChsectionTwoTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Two Description</label>
+                                                                                <textarea class="form-control" name="sectionTwoDescServices" id="sectionTwoDescServices" #sectionTwoDescServices="ngModel" [(ngModel)]="newInfoReg.ChsectionTwoDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Three</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Three Title</label>
+                                                                                <input type="text" class="form-control" id="sectionThreeTitleServices" name="sectionThreeTitleServices" #sectionThreeTitleServices="ngModel" [(ngModel)]="newInfoReg.ChsectionThreeTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Three Description</label>
+                                                                                <textarea class="form-control" name="sectionThreeDescServices" id="sectionThreeDescServices" #sectionThreeDescServices="ngModel" [(ngModel)]="newInfoReg.ChsectionThreeDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Four</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Four Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFourTitleServices" name="sectionFourTitleServices" #sectionFourTitleServices="ngModel" [(ngModel)]="newInfoReg.ChsectionFourTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Four Description</label>
+                                                                                <textarea class="form-control" name="sectionFourDescServices" id="sectionFourDescServices" #sectionFourDescServices="ngModel" [(ngModel)]="newInfoReg.ChsectionFourDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <h3 class="header-title mt-0 mb-3">Section Five</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionTitle">Section Five Title</label>
+                                                                                <input type="text" class="form-control" id="sectionFiveTitleServices" name="sectionFiveTitleServices" #sectionFiveTitleServices="ngModel" [(ngModel)]="newInfoReg.ChsectionFiveTitle" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="welcomeSectionDesc">Section Five Description</label>
+                                                                                <textarea class="form-control" name="sectionFiveDescServices" id="sectionFiveDescServices" #sectionFiveDescServices="ngModel" [(ngModel)]="newInfoReg.ChsectionFiveDesc" rows="2"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingFour">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                                        Footer Section
+                                                                    </button>
+                                                                </h1>
+                                                                </div>
+                                                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="contactEmail">Contact Email</label>
+                                                                                <input type="email" class="form-control" id="contactEmail" name="contactEmail" #contactEmail="ngModel" [(ngModel)]="newInfoReg.footerSectionEmail" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="contactPhone">Contact Phone</label>
+                                                                                <input type="text" class="form-control" name="contactPhone" id="contactPhone" #contactPhone="ngModel" [(ngModel)]="newInfoReg.footerSectionPhone" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="address">Address</label>
+                                                                                <input type="text" class="form-control" name="address" id="address" #address="ngModel" [(ngModel)]="newInfoReg.footerSectionAddress" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="diazConstructionsFooterDesc">Footer Description</label>
+                                                                                <input type="text" class="form-control" name="diazConstructionsFooterDesc" id="diazConstructionsFooterDesc" #diazConstructionsFooterDesc="ngModel" [(ngModel)]="newInfoReg.footerSectionDCFooterDesc" required>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingFive">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                                        Social Media URL
+                                                                    </button>
+                                                                </h1>
+                                                                </div>
+                                                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <h3 class="header-title mt-0 mb-3">Section One</h3>
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="facebookUrl">Facebook URL</label>
+                                                                                <input type="text" class="form-control" id="facebookUrl" name="facebookUrl" #facebookUrl="ngModel" [(ngModel)]="newInfoReg.socialMediaFacebookUrl" required="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="instagramUrl">Instagram URL</label>
+                                                                                <input type="text" class="form-control" id="instagramUrl" name="instagramUrl" #instagramUrl="ngModel" [(ngModel)]="newInfoReg.socialMediaInstagramUrl" required="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="phoneNumber">Phone Number </label>
+                                                                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" [(ngModel)]="newInfoReg.socialMediaWhatsappNumber" required="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input style="max-width: 28em;" type="submit" class="btn btn-success waves-effect waves-light btn-lg btn-block" value="Save Information">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="dataChild == 'categories'">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body new-user order-list">
+                                <h4 class="header-title mt-0 mb-3">Categories Management</h4>
+                                <div class="container-fluid">
+                                    <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <label class="col-form-label text-right">Select Category</label>
+                                            <div class="col-md-5">
+                                                <select class="form-control" [(ngModel)]="categoryId">
+                                                    <option value = ''>Select</option>
+                                                    <option [value]="category.id" *ngFor="let category of categories">{{category.categoryName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-warning" (click)="fetchCategoryById(categoryId)">Edit</button>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger" (click)="deleteCategory(categoryId)">Delete</button>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-success" (click)="action = 'newCat'">New</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <ng-container *ngIf='action === "newCat"'>
+                                            <div class="container">
+                                                <form #newCategoryForm="ngForm" (ngSubmit)="newCategory(newCatReg);">
+                                                    <div class="container">
+                                                        <div class="accordion" id="accordionExample">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingOne">
+                                                                    <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link" type="button">
+                                                                        New Category
+                                                                    </button>
+                                                                    </h1>
+                                                                </div>
+                                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                    <div class="card-body">
+                                                                        <div class="col-md-12 row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="welcomeSectionTitle">Category Name</label>
+                                                                                    <input type="text" class="form-control" id="sectionOneTitle" name="sectionOneTitle" #sectionOneTitle="ngModel" [(ngModel)]="newCatReg.categoryName" required="" pattern="[a-z A-Z]+">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="welcomeSectionDesc">Category Description</label>
+                                                                                    <textarea class="form-control" name="sectionOneDesc" id="sectionOneDesc" #sectionOneDesc="ngModel" [(ngModel)]="newCatReg.categoryDescription" rows="2"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input style="max-width: 28em;" type="submit" class="btn btn-success waves-effect waves-light btn-lg btn-block" value="Save Information">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf='action === "editCat"'>
+                                            <div class="container">
+                                                <form #newRegInfoForm="ngForm" (ngSubmit)="editCategory(categoryById, categoryId);">
+                                                    <div class="container">
+                                                        <div class="accordion" id="accordionExample">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingOne">
+                                                                    <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link" type="button">
+                                                                        Edit Category
+                                                                    </button>
+                                                                    </h1>
+                                                                </div>
+                                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                    <div class="card-body">
+                                                                        <div class="col-md-12 row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="welcomeSectionTitle">Category Name</label>
+                                                                                    <input type="text" class="form-control" id="sectionOneTitle" name="sectionOneTitle" #sectionOneTitle="ngModel" [(ngModel)]="categoryById.categoryName" required="" pattern="[a-z A-Z]+">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="welcomeSectionDesc">Category Description</label>
+                                                                                    <textarea class="form-control" name="sectionOneDesc" id="sectionOneDesc" #sectionOneDesc="ngModel" [(ngModel)]="categoryById.categoryDescription" rows="2"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12 text-center">
+                                                                                <ng-container *ngIf="newStatCat == '2'">
+                                                                                    <button type="button" class="btn btn-success" disabled>Currently {{statusCat}}</button>
+                                                                                    &nbsp;
+                                                                                    <button type="button" class="btn btn-danger" (click)="categoryById.status = changeStatCat('1')">Deactivate Category</button>
+                                                                                </ng-container>
+                                                                                <ng-container *ngIf="newStatCat == '1'">
+                                                                                    <button type="button" class="btn btn-success" (click)="categoryById.status = changeStatCat('2')">Activate Category</button>
+                                                                                    &nbsp;
+                                                                                    <button type="button" class="btn btn-danger" disabled>Currently {{statusCat}}</button>
+                                                                                </ng-container>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input style="max-width: 28em;" type="submit" class="btn btn-success waves-effect waves-light btn-lg btn-block" value="Save Information">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="dataChild == 'gallery'">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body new-user order-list">
+                                <h4 class="header-title mt-0 mb-3">Gallery Management</h4>
+                                <div class="container-fluid">
+                                    <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <label class="col-form-label text-right">Select Image</label>
+                                            <div class="col-md-5">
+                                                <select class="form-control" [(ngModel)]="imageId">
+                                                    <option value = ''>Select</option>
+                                                    <option [value]="image.id" *ngFor="let image of images">{{image.imageTitle}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-warning" (click)="fetchImageById(imageId)">Edit</button>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger" (click)="deleteImage(imageId)">Delete</button>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-success" (click)="action = 'newImage'">New</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <ng-container *ngIf='action === "newImage"'>
+                                            <div class="container">
+                                                <form #newCategoryForm="ngForm" (ngSubmit)="newImage(newImageReg);">
+                                                    <div class="container">
+                                                        <div class="accordion" id="accordionExample">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingOne">
+                                                                    <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link" type="button">
+                                                                        New Image
+                                                                    </button>
+                                                                    </h1>
+                                                                </div>
+                                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                    <div class="card-body">
+                                                                        <div class="col-md-12 row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="imageTitle">Image Title</label>
+                                                                                    <input type="text" class="form-control" id="imageTitle" name="imageTitle" #imageTitle="ngModel" [(ngModel)]="newImageReg.imageTitle" required="" pattern="[a-z A-Z]+">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="imageDescription">Image Description</label>
+                                                                                    <textarea class="form-control" name="imageDescription" id="imageDescription" #imageDescription="ngModel" [(ngModel)]="newImageReg.imageDescription" rows="2"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="welcomeSectionTitle">Image Short Description</label>
+                                                                                    <input type="text" class="form-control" id="shortDescription" name="shortDescription" #shortDescription="ngModel" [(ngModel)]="newImageReg.shortDescription" required="" pattern="[a-z A-Z]+">
+                                                                                    <small>Example: Living Room Remodeling</small>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label class="col-form-label text-right">Select the Category Related to the Image</label>
+                                                                                <select class="form-control" #imgCatId="ngModel" name="imgCatId" id="imgCatId" [(ngModel)]="newImageReg.imgCatId">
+                                                                                    <option value = ''>Select</option>
+                                                                                    <option [value]="category.id" *ngFor="let category of categories">{{category.categoryName}}</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-md-6 mb-3">
+                                                                                <input type="file" class="custom-file-input" id="customFile" (change)="fileChangeEvent($event)">
+                                                                                <label class="custom-file-label" for="customFile">Choose the image to upload</label>
+                                                                            </div>
+                                                                            <div class="col-md-6 text-center mb-3">
+                                                                                <img [src]="imgSelected" class="img-thumbnail" alt="Rounded image" style="max-width: 350px;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input style="max-width: 28em;" type="submit" class="btn btn-success waves-effect waves-light btn-lg btn-block" value="Save Image">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf='action === "editImage"'>
+                                            <div class="container">
+                                                <form #newRegInfoForm="ngForm" (ngSubmit)="editImage(imageId, imageById);">
+                                                    <div class="container">
+                                                        <div class="accordion" id="accordionExample">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingOne">
+                                                                    <h1 class="header-title mt-0 mb-3">
+                                                                    <button class="btn btn-link" type="button">
+                                                                        New Image
+                                                                    </button>
+                                                                    </h1>
+                                                                </div>
+                                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                    <div class="card-body">
+                                                                        <div class="col-md-12 row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="imageTitle">Image Title</label>
+                                                                                    <input type="text" class="form-control" id="imageTitle" name="imageTitle" #imageTitle="ngModel" [(ngModel)]="imageById.imageTitle" required="" pattern="[a-z A-Z]+">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="imageDescription">Image Description</label>
+                                                                                    <textarea class="form-control" name="imageDescription" id="imageDescription" #imageDescription="ngModel" [(ngModel)]="imageById.imageDescription" rows="2"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="welcomeSectionTitle">Image Short Description</label>
+                                                                                    <input type="text" class="form-control" id="shortDescription" name="shortDescription" #shortDescription="ngModel" [(ngModel)]="imageById.shortDescription" required="" pattern="[a-z A-Z]+">
+                                                                                    <small>Example: Living Room Remodeling</small>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label class="col-form-label text-right">Select the Category Related to the Image</label>
+                                                                                <select class="form-control" #imgCatId="ngModel" name="imgCatId" id="imgCatId" [(ngModel)]="imageById.categoryId">
+                                                                                    <option value = ''>Select</option>
+                                                                                    <option [value]="category.id" *ngFor="let category of categories">{{category.categoryName}}</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-md-6 mb-3">
+                                                                                <input type="file" class="custom-file-input" id="customFile" (change)="fileChangeEvent($event)">
+                                                                                <label class="custom-file-label" for="customFile">Choose the image to upload</label>
+                                                                            </div>
+                                                                            <div class="col-md-6 text-center mb-3">
+                                                                                <img [src]="imgSelected" class="img-thumbnail" alt="Rounded image" style="max-width: 350px;">
+                                                                            </div>
+                                                                            <div class="col-md-12 text-center">
+                                                                                <ng-container *ngIf="imageById.sliderStatus == 0 ">
+                                                                                    <button type="button" class="btn btn-warning" id="slider" (click)="imageById.sliderStatus = 1">Show on Slider</button>
+                                                                                </ng-container>
+                                                                                <ng-container *ngIf="imageById.sliderStatus == 1">
+                                                                                    <button type="button" class="btn btn-warning" id="slider" (click)="imageById.sliderStatus = 0">Hide on Slider</button>
+                                                                                </ng-container>
+                                                                                <ng-container *ngIf="imageById.imageStatus == 1">
+                                                                                    &nbsp;
+                                                                                    <button type="button" class="btn btn-success" id="gallerySt" (click)="imageById.imageStatus = 2">Show on Galery</button>
+                                                                                </ng-container>
+                                                                                <ng-container *ngIf="imageById.imageStatus == 2">
+                                                                                    &nbsp;
+                                                                                    <button type="button" class="btn btn-success" id="gallerySt" (click)="imageById.imageStatus = 1">Hide on Galery</button>      
+                                                                                </ng-container>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input style="max-width: 28em;" type="submit" class="btn btn-success waves-effect waves-light btn-lg btn-block" value="Save Image">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-container>
+            <ng-container *ngIf="dataChild == 'prospects'">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body new-user order-list">
+                                <h4 class="header-title mt-0 mb-3">Prospects Overview</h4>
+                                <div class="container-fluid">
+                                    <div class="col-lg-6">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="container">
+                                            <h2 class="header-title mt-0 mb-3">Inbox</h2>
+                                            <div class="card my-3">
+                                                <ul class="message-list">
+                                                    <li *ngFor="let prospect of prospects">                                           
+                                                        <div class="col-mail col-mail-1">
+                                                            <div class="checkbox-wrapper-mail">
+                                                                <input type="checkbox" id="chk19" checked>
+                                                                <label for="chk19" class="toggle"></label>
+                                                            </div>
+                                                            <a id="showMessage">
+                                                                <p class="title">{{prospect.name}}</p>
+                                                            </a>                                                    
+                                                        </div>
+                                                        <div class="col-mail col-mail-2">
+                                                            <a class="subject"><span class="teaser">{{prospect.message}}</span></a>
+                                                            <div class="date">
+                                                                <button (click)="redMessage(prospect);" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseMessage1" aria-expanded="false" aria-controls="collapseMessage1">
+                                                                    Read
+                                                                </button>
+                                                            </div>
+                                                        </div>         
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="dataChild == 'users'">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body new-user order-list">
+                                <h4 class="header-title mt-0 mb-3">Users Management</h4>
+                                <div class="container-fluid">
+                                    <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <!-- <label class="col-form-label text-right">Select the user</label> -->
+                                            <!-- <div class="col-md-5">
+                                                <select class="form-control" [(ngModel)]="usersId">
+                                                    <option value = ''>Select</option>
+                                                    <option [value]="user.id" *ngFor="let user of users">{{user.name}}</option>
+                                                </select>
+                                            </div> -->
+                                            <div class="col-md-4">
+                                                <!-- <button type="submit" class="btn btn-warning" (click)="fetchInformationById(informationId)">Edit</button>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger" (click)="deleteInformation(informationId)">Delete</button>
+                                                &nbsp; -->
+                                                <button type="submit" class="btn btn-success" (click)="action = 'all'">List All</button>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-success"(click)="action = 'newUser'">New</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <ng-container *ngIf="action == 'all'">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered mb-0">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Email</th>
+                                                            <th>Password</th>
+                                                            <th>Status</th>
+                                                            <th>Options</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let user of usersList">
+                                                                <td>{{user.name}} {{user.surname}}</td>
+                                                                <td>{{user.email}}</td>
+                                                                <td class=""><span class="teaser">{{user.password}}</span></td>
+                                                                <td *ngIf="user.status == '1'">Disabled</td>
+                                                                <td *ngIf="user.status == '2'">Active</td>
+                                                                <td class="text-center">
+                                                                    <ng-container *ngIf="sessionId == user.id">
+                                                                        <button type="button" class="btn btn-sm btn-success" (click)="getUserById(user.id)"><i class="fas fa-edit"></i></button>
+                                                                        &nbsp;
+                                                                        <button type="button" class="btn btn-sm btn-danger" disabled><i class="fas fa-trash-alt"></i></button>
+                                                                    </ng-container>
+                                                                    <ng-container *ngIf="sessionId != user.id">
+                                                                        <button type="button" class="btn btn-sm btn-success" (click)="getUserById(user.id)"><i class="fas fa-edit"></i></button>
+                                                                        &nbsp;
+                                                                        <button type="button" class="btn btn-sm btn-danger" (click)="deleteUser(user.id)"><i class="fas fa-trash-alt"></i></button>
+                                                                    </ng-container>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table><!--end /table-->
+                                                </div><!--end /tableresponsive-->
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="action == 'newUser'">
+                                            <div class="container">
+                                                <form #newUserForm="ngForm" (ngSubmit)="newUserRegister(newUserForm);">
+                                                    <div class="container">
+                                                        <div class="accordion" id="accordionExample">
+                                                            <div class="card-header" id="headingOne">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                <button class="btn btn-link" type="button">
+                                                                    New User
+                                                                </button>
+                                                                </h1>
+                                                            </div>
+                                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="name">First Name</label>
+                                                                                <input type="text" class="form-control" id="name" name="name" #name="ngModel" ngModel required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="surname">Last Name</label>
+                                                                                <input type="text" class="form-control" id="surname" name="surname" #surname="ngModel" ngModel required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="email">Email</label>
+                                                                                <input type="email" class="form-control" id="email" name="email" #email="ngModel" ngModel required="">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="password">Password</label>
+                                                                                <input type="password" class="form-control" id="password" name="password" #password="ngModel" ngModel required="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input style="max-width: 28em;" type="submit" class="btn btn-success waves-effect waves-light btn-lg btn-block" value="Save User">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="action == 'editUser'">
+                                            <div class="container">
+                                                <form #editUserForm="ngForm" (ngSubmit)="editUser(userId, editUserForm);">
+                                                    <div class="container">
+                                                        <div class="accordion" id="accordionExample">
+                                                            <div class="card-header" id="headingOne">
+                                                                <h1 class="header-title mt-0 mb-3">
+                                                                <button class="btn btn-link" type="button">
+                                                                    Edit User
+                                                                </button>
+                                                                </h1>
+                                                            </div>
+                                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <div class="col-md-12 row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="name">First Name</label>
+                                                                                <input type="text" class="form-control" id="name" name="name" #name="ngModel" [(ngModel)]="usersById.name" required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="surname">Last Name</label>
+                                                                                <input type="text" class="form-control" id="surname" name="surname" #surname="ngModel" [(ngModel)]="usersById.surname"  required="" pattern="[a-z A-Z]+">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="email">Email</label>
+                                                                                <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="usersById.email"  required="">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label for="password">Password</label>
+                                                                                <input type="password" class="form-control" id="password" name="password" #password="ngModel" ngModel>
+                                                                                <small>If you dont want to change the password, you can leave this field blank</small>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 text-center">
+                                                                        <ng-container *ngIf="userStat == '2'">
+                                                                            <button type="button" class="btn btn-success" disabled>Currently {{userStatus}}</button>
+                                                                            &nbsp;
+                                                                            <button type="button" class="btn btn-danger" (click)="userStat = changeUserStat('1')">Deactivate User</button>
+                                                                        </ng-container>
+                                                                        <ng-container *ngIf="userStat == '1'">
+                                                                            <button type="button" class="btn btn-success" (click)="userStat = changeUserStat('2')">Activate User</button>
+                                                                            &nbsp;
+                                                                            <button type="button" class="btn btn-danger" disabled>Currently {{userStatus}}</button>
+                                                                        </ng-container>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <input style="max-width: 28em;" type="submit" class="btn btn-success waves-effect waves-light btn-lg btn-block" value="Update User">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="dataChild == 'reviews'">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body new-user order-list">
+                                <h4 class="header-title mt-0 mb-3">Reviews Management</h4>
+                                <div class="container-fluid">
+                                    <!-- <div class="col-lg-6">
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-lg-12">
+                                        <ng-container *ngIf="action == 'all'">
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered mb-0">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Email</th>
+                                                            <th>Review</th>
+                                                            <th>Work Done</th>
+                                                            <th>Location</th>
+                                                            <th>Status</th>
+                                                            <th>Options</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let review of reviewsList">
+                                                                <td>{{review.name}}</td>
+                                                                <td>{{review.email}}</td>
+                                                                <td class=""><span class="teaser">{{review.description}}</span></td>
+                                                                <td>{{review.workDone}}</td>
+                                                                <td>{{review.ipLocation}}</td>
+                                                                <td *ngIf="review.reviewStatus == '1'">Disabled</td>
+                                                                <td *ngIf="review.reviewStatus == '2'">Active</td>
+                                                                <td class="text-center">
+                                                                    <button type="button" class="btn btn-sm btn-success" *ngIf="review.reviewStatus == '1'" (click)="updateReview('2', review.id)">Activate</button>
+                                                                    &nbsp;
+                                                                    <button type="button" class="btn btn-sm btn-success" *ngIf="review.reviewStatus == '2'" (click)="updateReview('1', review.id)">Deactivate</button>
+                                                                    &nbsp;
+                                                                    <button type="button" class="btn btn-sm btn-danger" (click)="reviewDelete(review.id)">Delete</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table><!--end /table-->
+                                                </div><!--end /tableresponsive-->
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body new-user order-list">
+                            <h4 class="header-title mt-0 mb-3">Web Site Visualization</h4>
+                            <iframe src="http://192.168.20.32:4200/" name="myIFrame" id="myIFrame" scrolling="auto" style="min-width: 100%;border: 0px none #000000;min-height: 50em;"></iframe>
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!-- container -->
+        <app-footer></app-footer>
+    </div>
+    <!-- end page content -->
+</div>
