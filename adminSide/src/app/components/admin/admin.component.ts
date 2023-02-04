@@ -67,6 +67,7 @@ export class AdminComponent {
   public usersList: Array<any> = [];
   public usersById: any = {};
   public reviewsList: Array<any> = [];
+  public userName: string;
 
 
 
@@ -94,6 +95,7 @@ export class AdminComponent {
 
   ngOnInit() {
     let decodedToken = this.helper.decodeToken(this.token);
+    this.userName = decodedToken.name;
     if (this.token && decodedToken.rol == "2" && decodedToken.status == "2") {
       if (this.helper.isTokenExpired(this.token)) {
         localStorage.clear();
@@ -546,23 +548,7 @@ export class AdminComponent {
 
   fileChangeEvent(event:any):void{
     var fileTemp;
-    // if (/image\/hei(c|f)/.test(f.type)) {
-    //   convProm = heic2any({blob,toType:"image/jpeg",quality:0}).then((jpgBlob:Blob) => {
-  
-    //     //Change the name of the file according to the new format
-    //     let newName = f.name.replace(/\.[^/.]+$/, ".jpg");
-  
-    //     //Convert blob back to file
-    //     file = this.blobToFile(jpgBlob,newName);
-  
-    //   }).catch(err => {
-    //     //Handle error
-    //   });
-    // } else {
-    //   //This is not a HEIC image so we can just resolve
-    //   convProm = Promise.resolve(true);
-    // }
-  
+
     if(event.target.files && event.target.files[0]){
       fileTemp = <File>event.target.files[0];
     }else{
