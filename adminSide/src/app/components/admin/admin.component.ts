@@ -43,6 +43,7 @@ export class AdminComponent {
   public usersId: String = '';
 
   public galleryQuantity: any;
+  public reviewsQuantity: any;
   public newInfoReg: any = {};
   public welcomeSection: any = {};
   public servicesSection: any = {};
@@ -58,6 +59,7 @@ export class AdminComponent {
   public categories: Array<any> = [];
   public images: Array<any> = [];
   public activeGallery: Array<any> = [];
+  public activeReviews: Array<any> = [];
   public prospects: Array<any> = [];
   public users: Array<any> = [];
   public usersList: Array<any> = [];
@@ -821,6 +823,15 @@ export class AdminComponent {
         this.reviewsList = [];
         this.reviewsList = response.data;
         console.log(this.reviewsList);
+
+        for (let clave in this.reviewsList) {
+          let val = this.reviewsList[clave];
+          if (val.reviewStatus == '2') {
+            this.activeReviews[clave] = this.reviewsList[clave];
+          }
+        }
+        this.reviewsQuantity = Object.keys(this.activeReviews).length;
+
       },(error: any) => {
         this.Toast.fire({
           icon: 'error',

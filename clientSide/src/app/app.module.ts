@@ -13,6 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { StarReviewComponent } from './components/addOns/star-review/star-review.component';
+import { StarViewerComponent } from './components/addOns/star-viewer/star-viewer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
     HomeComponent,
     ReviewsComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    StarReviewComponent,
+    StarViewerComponent
   ],
   imports: [
     BrowserModule,

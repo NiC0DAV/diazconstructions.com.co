@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 export class ReviewsComponent {
 
   public Toast: any;
-  public rate: any = null;
   public rating: any;
 
   constructor(private _userService: UserService,private _router: Router) {
@@ -28,13 +27,20 @@ export class ReviewsComponent {
     });
   }
 
-  reviewsForm(data: any){
+  receiveData($event: any) {
+    console.log($event);
+    this.rating = $event;
+  }
+
+  reviewsForm(data: any) {
+    data.value.rating = this.rating;
     this._userService.reviewsRegister(data.value).subscribe(
       (response: any) => {
         this.Toast.fire({
           icon: 'success',
           title: response.message
         });
+        console.log(response.data);
       }, (error: any) => {
         this.Toast.fire({
           icon: 'error',

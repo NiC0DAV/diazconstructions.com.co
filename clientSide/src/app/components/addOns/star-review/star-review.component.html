@@ -1,0 +1,10 @@
+
+<fieldset class="rating">
+  <ng-container *ngFor = "let num of [5, 4, 3, 2, 1]">
+    <input (click)="starHandler(num)" [id]="'star'+num" [value] = "num" name="rating" type="radio">
+    <label class="full" [for]="'star'+num"></label>
+
+    <input (click)="starHandler(num - 0.5)" [id]="'half-star'+num" [value] = "num-0.5" name="rating" type="radio">
+    <label class="half" [for]="'half-star'+num"></label>
+  </ng-container>
+</fieldset>

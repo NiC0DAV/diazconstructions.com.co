@@ -9,6 +9,9 @@
                   <input type="text" class="field" placeholder="Your Email" id="email" name="email" #email="ngModel" ngModel required>
                   <input type="text" class="field" placeholder="What project do we do for you?" id="workDone" name="workDone" #workDone="ngModel" ngModel required>
                   <textarea placeholder="Description" class="field" id="description" name="description" #description="ngModel" ngModel required></textarea>
+                  <div style="display: flex; justify-content: center; margin-top: -22px; margin-bottom: 3px;">
+                    <star-review (messageEvent)="receiveData($event)"></star-review>
+                  </div>
                   <button type = "submit" class="btn">Send Review</button>
               </form>
     </div>

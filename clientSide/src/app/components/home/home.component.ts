@@ -4,7 +4,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { UserService } from 'src/app/services/user.service';
 import lgZoom from 'lightgallery/plugins/zoom';
 import { LightGallery } from 'lightgallery/lightgallery';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { createPopper } from '@popperjs/core';
 
 import Swal from 'sweetalert2';
@@ -29,7 +29,14 @@ interface RecordStore {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({ opacity: 1 })),
+      transition(':enter', [style({ opacity: 0 }), animate(600)]),
+      transition(':leave', animate(600, style({ opacity: 0 })))
+    ])
+  ]
 })
 export class HomeComponent {
   private lightGallery!: LightGallery;
@@ -65,7 +72,7 @@ export class HomeComponent {
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
-      didOpen: (toast) => {
+      didOpen: (toast: any) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
@@ -109,17 +116,12 @@ export class HomeComponent {
           }
         }
 
-        // if (Object.keys(this.webContent).length === 0) {
-        //   this._router.navigate(['somethingWentWrong']);
-        // }
-
         this.welcomeSection = this.webContent.welcomeSection;
         this.servicesSection = this.webContent.servicesSection;
         this.characteristicsSection = this.webContent.CharacteristicsSection;
         this.loader = false;
-
       }, (error: any) => {
-        this._router.navigate(['something-went-wrong']);
+        this._router.navigate(['/something-went-wrong']);
       }
     );
   }
@@ -138,7 +140,7 @@ export class HomeComponent {
         this.categories = this.categories.filter(n => n);
 
       }, (error) => {
-        this._router.navigate(['something-went-wrong']);
+        this._router.navigate(['/something-went-wrong']);
       }
     );
   }
@@ -175,9 +177,8 @@ export class HomeComponent {
     );
   }
 
-  public filter(category: string = 'all'){
+  filter(category: string = 'all'){
     this.store.refined = this.store.cached.filter(p => p.categoryName == category || category == 'all');
-    this.needRefresh = true;
   }
 
   imageByCategory(id: any) {

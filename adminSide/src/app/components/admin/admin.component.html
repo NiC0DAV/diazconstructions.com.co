@@ -46,7 +46,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden" style="height: 322px! important;">
                         <div class="card-body bg-gradient1">
                             <div class="">
                                 <div class="card-icon">
@@ -56,7 +56,7 @@
                                 <p class="text-white mb-0 font-16">Current Gallery</p>
                             </div>
                         </div>
-                        <div class="card-body dash-info-carousel">
+                        <div class="card-body dash-info-carousel" style="height: 201px! important;">
                             <div id="carousel_best_saler" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
@@ -96,17 +96,17 @@
                 </div><!--end col-->
 
                 <div class="col-lg-6">
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden" style="height: 322px! important;">
                         <div class="card-body bg-gradient3">
                             <div class="">
                                 <div class="card-icon">
                                     <i class="far fa-smile"></i>
                                 </div>
-                                <h2 class="font-weight-bold text-white">58</h2>
+                                <h2 class="font-weight-bold text-white">{{reviewsQuantity || 0}}</h2>
                                 <p class="text-white mb-0 font-16">Reviews</p>
                             </div>
                         </div><!--end card-body-->
-                        <div class="card-body dash-info-carousel">
+                        <div class="card-body dash-info-carousel" style="height: 201px! important;">
                             <div id="carousel_review" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
@@ -119,19 +119,13 @@
                                         </div>
                                         <div class="text-center">
                                             <br>
-                                            <h3 class="m-0">John Doe</h3>
+                                            <h4 class="m-0">Current Reviews</h4>
                                             <br>
-                                            <p class="mb-1 text-muted">Work Done</p>
-                                            <p class="mb-1 text-muted">There are many variations of passages of Lorem
-                                                Ipsum available,
-                                                but the majority have suffered alteration in some form, by injected
-                                                humour, or randomised
-                                                variations of passages of Lorem Ipsum available.
-                                            </p>
+                                            <p class="mb-1 text-muted">Here you can see the reviews that are being shown on the website.</p>
                                         </div>
                                     </div>
 
-                                    <div class="carousel-item">
+                                    <div class="carousel-item" *ngFor="let review of reviewsList">
                                         <div class="media">
                                             <img src="assets/images/flags/us_flag.jpg"
                                                 class="mr-2 thumb-xs rounded-circle" alt="...">
@@ -141,15 +135,10 @@
                                         </div>
                                         <div class="text-center">
                                             <br>
-                                            <h3 class="m-0">John Doe</h3>
+                                            <h3 class="m-0">{{review.name}}</h3>
                                             <br>
-                                            <p class="mb-1 text-muted">Work Done</p>
-                                            <p class="mb-1 text-muted">There are many variations of passages of Lorem
-                                                Ipsum available,
-                                                but the majority have suffered alteration in some form, by injected
-                                                humour, or randomised
-                                                variations of passages of Lorem Ipsum available.
-                                            </p>
+                                            <p class="mb-1 text-muted">{{review.workDone}}</p>
+                                            <p class="mb-1 text-muted">{{review.description}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +221,7 @@
                                                                     </button>
                                                                     </h1>
                                                                 </div>
-                                                            
+
                                                                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                                                     <div class="card-body">
                                                                         <h3 class="header-title mt-0 mb-3">Section One</h3>
@@ -1259,7 +1248,7 @@
                                                                                 </ng-container>
                                                                                 <ng-container *ngIf="imageById.imageStatus == 2">
                                                                                     &nbsp;
-                                                                                    <button type="button" class="btn btn-success" id="gallerySt" (click)="imageById.imageStatus = 1">Hide on Galery</button>      
+                                                                                    <button type="button" class="btn btn-success" id="gallerySt" (click)="imageById.imageStatus = 1">Hide on Galery</button>
                                                                                 </ng-container>
                                                                             </div>
                                                                         </div>
@@ -1296,7 +1285,7 @@
                                             <h2 class="header-title mt-0 mb-3">Inbox</h2>
                                             <div class="card my-3">
                                                 <ul class="message-list">
-                                                    <li *ngFor="let prospect of prospects">                                           
+                                                    <li *ngFor="let prospect of prospects">
                                                         <div class="col-mail col-mail-1">
                                                             <div class="checkbox-wrapper-mail">
                                                                 <input type="checkbox" id="chk19" checked>
@@ -1304,7 +1293,7 @@
                                                             </div>
                                                             <a id="showMessage">
                                                                 <p class="title">{{prospect.name}}</p>
-                                                            </a>                                                    
+                                                            </a>
                                                         </div>
                                                         <div class="col-mail col-mail-2">
                                                             <a class="subject"><span class="teaser">{{prospect.message}}</span></a>
@@ -1313,7 +1302,7 @@
                                                                     Read
                                                                 </button>
                                                             </div>
-                                                        </div>         
+                                                        </div>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1539,6 +1528,7 @@
                                                             <th>Review</th>
                                                             <th>Work Done</th>
                                                             <th>Location</th>
+                                                            <th>Given Score</th>
                                                             <th>Status</th>
                                                             <th>Options</th>
                                                         </tr>
@@ -1550,6 +1540,7 @@
                                                                 <td class=""><span class="teaser">{{review.description}}</span></td>
                                                                 <td>{{review.workDone}}</td>
                                                                 <td>{{review.ipLocation}}</td>
+                                                                <td>{{review.rating}} Stars</td>
                                                                 <td *ngIf="review.reviewStatus == '1'">Disabled</td>
                                                                 <td *ngIf="review.reviewStatus == '2'">Active</td>
                                                                 <td class="text-center">
