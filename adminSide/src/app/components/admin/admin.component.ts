@@ -7,6 +7,8 @@ import { InformationService } from 'src/app/services/information.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ImageService } from 'src/app/services/image.service';
 import { ProspectsService } from 'src/app/services/prospects.service';
+import heic2any from "heic2any";
+
 declare var jQuery: any;
 declare var $: any;
 
@@ -544,7 +546,23 @@ export class AdminComponent {
 
   fileChangeEvent(event:any):void{
     var fileTemp;
-
+    // if (/image\/hei(c|f)/.test(f.type)) {
+    //   convProm = heic2any({blob,toType:"image/jpeg",quality:0}).then((jpgBlob:Blob) => {
+  
+    //     //Change the name of the file according to the new format
+    //     let newName = f.name.replace(/\.[^/.]+$/, ".jpg");
+  
+    //     //Convert blob back to file
+    //     file = this.blobToFile(jpgBlob,newName);
+  
+    //   }).catch(err => {
+    //     //Handle error
+    //   });
+    // } else {
+    //   //This is not a HEIC image so we can just resolve
+    //   convProm = Promise.resolve(true);
+    // }
+  
     if(event.target.files && event.target.files[0]){
       fileTemp = <File>event.target.files[0];
     }else{

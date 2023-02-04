@@ -2,8 +2,6 @@ import { Component, ViewChild, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { UserService } from 'src/app/services/user.service';
-import lgZoom from 'lightgallery/plugins/zoom';
-import { LightGallery } from 'lightgallery/lightgallery';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { createPopper } from '@popperjs/core';
 
@@ -39,7 +37,6 @@ interface RecordStore {
   ]
 })
 export class HomeComponent {
-  private lightGallery!: LightGallery;
   public needRefresh = false;
   public webContent: any = {};
   public categories: Array<any> = [];
@@ -63,6 +60,7 @@ export class HomeComponent {
   public selection: String;
   public selectedCategory: any;
   public category: string;
+  public elementsQuantity: number = 4;
 
   constructor(private _userService: UserService,private _router: Router, private renderer: Renderer2) {
     this.Toast = Swal.mixin({
@@ -79,29 +77,12 @@ export class HomeComponent {
 
   }
 
-  ngAfterViewChecked(): void {
-    if (this.needRefresh) {
-      this.lightGallery.refresh();
-      this.needRefresh = false;
-    }
-  }
-
-  settings = {
-    counter: false,
-    plugins: [lgZoom]
-  };
-  onInit = (detail:any): void => {
-    this.lightGallery = detail.instance;
-  };
-
   ngOnInit() {
-    // this.selection = 'all';
     this.getWebContent();
     this.getCategories();
     this.getImages();
     this.getReviews();
     this.filter();
-
   }
 
   getWebContent() {
@@ -179,8 +160,10 @@ export class HomeComponent {
 
   filter(category: string = 'all'){
     this.store.refined = this.store.cached.filter(p => p.categoryName == category || category == 'all');
-    this.selectedCategory = category;
+
+    this.elementsQuantity = this.store.refined.length;
   }
+
   imageByCategory(id: any) {
     this.loaderGallery = true;
     this.activeGalleryById = [];

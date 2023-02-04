@@ -35,6 +35,7 @@ export interface RecordData {
 export class GalleryLightboxComponent {
   @Input() galleryData: RecordData[] = [];
   @Input() showCount: boolean = false;
+  @Input() shownElements: number = 4;
 
   public previewImage: boolean = false;
   public showMask: boolean = false;

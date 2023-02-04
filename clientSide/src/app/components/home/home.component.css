@@ -25,3 +25,14 @@
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
   }
+
+@media screen and (max-width: 1024px) {
+  .gallery-section .filters .icon-box {
+    display: contents;
+  }
+  .gallery-section .filters .filter-tabs{
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
+  }
+}
