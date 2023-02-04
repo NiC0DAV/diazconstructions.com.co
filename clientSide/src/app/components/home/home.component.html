@@ -113,11 +113,13 @@
 
               <div class="text-center" >
                   <div class="container-fluid gallery">
-                      <lightgallery [settings]="settings" [onInit]="onInit">
+                      <!-- <lightgallery [settings]="settings" [onInit]="onInit">
                           <a *ngFor="let item of this.store.refined" [attr.data-lg-size]="1400-913" className="gallery-item" [attr.href]="'http://127.0.0.1:8000/Storage/images/'+item.pathImage" style="margin: 5px; margin-bottom: 5px; transition: top 0.4s ease-in-out, left 0.4s ease-in-out;">
                             <img className="img-responsive" src="http://127.0.0.1:8000/Storage/images/{{item.pathImage}}" style="width: 300px !important; max-height: 170px !important; margin-top: 1em !important;transition: top 0.4s ease-in-out, left 0.4s ease-in-out;">
                           </a>
-                      </lightgallery>
+                      </lightgallery> -->
+
+                      <app-gallery-lightbox [galleryData]="this.store.refined" [showCount]="true"></app-gallery-lightbox>
                   </div>
               </div>
 

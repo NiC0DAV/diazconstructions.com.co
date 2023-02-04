@@ -15,6 +15,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { StarReviewComponent } from './components/addOns/star-review/star-review.component';
 import { StarViewerComponent } from './components/addOns/star-viewer/star-viewer.component';
+import { GalleryLightboxComponent } from './components/addOns/gallery-lightbox/gallery-lightbox.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { StarViewerComponent } from './components/addOns/star-viewer/star-viewer
     FooterComponent,
     NavbarComponent,
     StarReviewComponent,
-    StarViewerComponent
+    StarViewerComponent,
+    GalleryLightboxComponent
   ],
   imports: [
     BrowserModule,

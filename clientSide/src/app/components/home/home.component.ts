@@ -13,11 +13,11 @@ declare var $: any;
 declare var jQuery: any;
 
 export interface RecordData {
-  id: any,
-  imageTitle: string,
-  categoryName: string,
-  pathImage: String,
-  opened?: boolean,
+  id: any;
+  imageTitle: string;
+  categoryName: string;
+  pathImage: string;
+  shortDescription: string;
 };
 
 interface RecordStore {
@@ -61,9 +61,8 @@ export class HomeComponent {
   public NOMBRE_HOST = location.port === "" || location.port == undefined ? "http://" + location.hostname + '/' : "http://" + location.hostname + ':' + location.port + '/';
   public store: RecordStore = {};
   public selection: String;
-  // public popcorn = document.querySelector('#popcorn');
-  // public tooltip = document.querySelector('#tooltip');
-
+  public selectedCategory: any;
+  public category: string;
 
   constructor(private _userService: UserService,private _router: Router, private renderer: Renderer2) {
     this.Toast = Swal.mixin({
@@ -172,6 +171,7 @@ export class HomeComponent {
         }
         this.store.cached = data;
         this.store.refined = data.sort((a,b) => a.id - b.id);
+        console.log(this.store.refined);
         this.loaderGallery = false;
       }
     );
@@ -179,8 +179,8 @@ export class HomeComponent {
 
   filter(category: string = 'all'){
     this.store.refined = this.store.cached.filter(p => p.categoryName == category || category == 'all');
+    this.selectedCategory = category;
   }
-
   imageByCategory(id: any) {
     this.loaderGallery = true;
     this.activeGalleryById = [];
