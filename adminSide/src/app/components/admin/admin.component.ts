@@ -615,7 +615,7 @@ export class AdminComponent {
           this.action = 'editImage';
           this.imageById = response.data[0];
           console.log(this.imageById);
-          this.imgSelected = 'http://127.0.0.1:8000/Storage/images/'+this.imageById.pathImage;
+          this.imgSelected = 'https://api.diazconstructions.com.co/public/storage/images/'+this.imageById.pathImage;
         },(error: any) => {
           this.Toast.fire({
             icon: 'error',

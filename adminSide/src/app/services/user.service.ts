@@ -80,7 +80,7 @@ export class UserService {
 
   getReviews(token: any): Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', token);
-    return this._http.get(this.url + 'fetchReviews/', { headers: headers });
+    return this._http.get(this.url + 'fetchReviews', { headers: headers });
   }
 
   updateReview(id: any, data: any, token: any): Observable<any>{

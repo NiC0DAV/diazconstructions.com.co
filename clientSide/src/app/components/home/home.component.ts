@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Renderer2 } from '@angular/core';
+import { Component, ViewChild, OnInit, Renderer2, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { UserService } from 'src/app/services/user.service';
@@ -6,9 +6,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { createPopper } from '@popperjs/core';
 
 import Swal from 'sweetalert2';
-
 declare var $: any;
-declare var jQuery: any;
 
 export interface RecordData {
   id: any;
@@ -60,7 +58,7 @@ export class HomeComponent {
   public selection: String;
   public selectedCategory: any;
   public category: string;
-  public elementsQuantity: number = 4;
+  public elementsQuantity: number = 3;
 
   constructor(private _userService: UserService,private _router: Router, private renderer: Renderer2) {
     this.Toast = Swal.mixin({
@@ -152,7 +150,7 @@ export class HomeComponent {
         }
         this.store.cached = data;
         this.store.refined = data.sort((a,b) => a.id - b.id);
-        console.log(this.store.refined);
+        // console.log(this.store.refined);
         this.loaderGallery = false;
       }
     );
@@ -268,6 +266,7 @@ export class HomeComponent {
   ngAfterViewInit() {
     const popcorn = document.querySelector('#popcorn');
     const tooltip = document.querySelector('#tooltip');
+
     //@ts-ignore
     createPopper(popcorn, tooltip, {
       placement: 'top-start',
@@ -282,14 +281,14 @@ export class HomeComponent {
     });
     //Update Header Style and Scroll to Top
     function headerStyle() {
-      if (jQuery('.main-header').length) {
-        var windowpos = jQuery(window).scrollTop();
+      if ($('.main-header').length) {
+        var windowpos = $(window).scrollTop();
         if (windowpos >= 200) {
-          jQuery('.main-header').addClass('fixed-header');
-          jQuery('.scroll-to-top').fadeIn(300);
+          $('.main-header').addClass('fixed-header');
+          $('.scroll-to-top').fadeIn(300);
         } else {
-          jQuery('.main-header').removeClass('fixed-header');
-          jQuery('.scroll-to-top').fadeOut(300);
+          $('.main-header').removeClass('fixed-header');
+          $('.scroll-to-top').fadeOut(300);
         }
       }
     }
@@ -297,16 +296,16 @@ export class HomeComponent {
     headerStyle();
 
     //Submenu Dropdown Toggle
-    if (jQuery('.main-header li.dropdown ul').length) {
-      jQuery('.main-header li.dropdown').append('<div class="dropdown-btn"></div>');
+    if ($('.main-header li.dropdown ul').length) {
+      $('.main-header li.dropdown').append('<div class="dropdown-btn"></div>');
 
       //Dropdown Button
-      jQuery('.main-header li.dropdown .dropdown-btn').on('click', () => {
-        jQuery(this).prev('ul').slideToggle(500);
+      $('.main-header li.dropdown .dropdown-btn').on('click', () => {
+        $(this).prev('ul').slideToggle(500);
       });
 
       //Disable dropdown parent link
-      jQuery('.navigation li.dropdown > a').on('click', function (e: { preventDefault: () => void; }) {
+      $('.navigation li.dropdown > a').on('click', function (e: { preventDefault: () => void; }) {
         e.preventDefault();
       });
     }
@@ -314,7 +313,7 @@ export class HomeComponent {
 
     //Hidden Bar Menu Config
     const hiddenBarMenuConfig = () => {
-      var menuWrap = jQuery('.hidden-bar .side-menu');
+      var menuWrap = $('.hidden-bar .side-menu');
       // appending expander button
       menuWrap.find('.dropdown').children('a').append(function () {
         return '<button type="button" class="btn expander"><i class="icon fa fa-angle-down"></i></button>';
@@ -323,15 +322,15 @@ export class HomeComponent {
       menuWrap.find('.dropdown').children('ul').hide();
       // toggling child ul
       menuWrap.find('.btn.expander').each(() => {
-        jQuery(this).on('click', () => {
-          jQuery(this).parent() // return parent of .btn.expander (a)
+        $(this).on('click', () => {
+          $(this).parent() // return parent of .btn.expander (a)
             .parent() // return parent of a (li)
             .children('ul').slideToggle();
 
           // adding class to expander container
-          jQuery(this).parent().toggleClass('current');
+          $(this).parent().toggleClass('current');
           // toggling arrow of expander
-          jQuery(this).find('i').toggleClass('fa-angle-up fa-angle-down');
+          $(this).find('i').toggleClass('fa-angle-up fa-angle-down');
 
           return false;
 
@@ -342,42 +341,36 @@ export class HomeComponent {
     hiddenBarMenuConfig();
 
 
-    // //Custom Scroll for Hidden Sidebar
-    // if (jQuery('.hidden-bar-wrapper').length) {
-    // 	jQuery('.hidden-bar-wrapper').mCustomScrollbar();
-    // }
-
-
     //Hidden Bar Toggler
-    if (jQuery('.hidden-bar-closer').length) {
-      jQuery('.hidden-bar-closer').on('click', function () {
-        jQuery('.hidden-bar').removeClass('visible-sidebar');
+    if ($('.hidden-bar-closer').length) {
+      $('.hidden-bar-closer').on('click', function () {
+        $('.hidden-bar').removeClass('visible-sidebar');
       });
     }
-    if (jQuery('.hidden-bar-opener').length) {
-      jQuery('.hidden-bar-opener').on('click', function () {
-        jQuery('.hidden-bar').addClass('visible-sidebar');
+    if ($('.hidden-bar-opener').length) {
+      $('.hidden-bar-opener').on('click', function () {
+        $('.hidden-bar').addClass('visible-sidebar');
       });
     }
 
     //Search Popup
-    if (jQuery('#search-popup').length) {
+    if ($('#search-popup').length) {
 
       //Show Popup
-      jQuery('.search-box-btn').on('click', function () {
-        jQuery('#search-popup').addClass('popup-visible');
+      $('.search-box-btn').on('click', function () {
+        $('#search-popup').addClass('popup-visible');
       });
 
       //Hide Popup
-      jQuery('.close-search').on('click', function () {
-        jQuery('#search-popup').removeClass('popup-visible');
+      $('.close-search').on('click', function () {
+        $('#search-popup').removeClass('popup-visible');
       });
     }
 
 
     //Revolution Slider
-    if (jQuery('.main-slider .tp-banner').length !== 0) {
-      jQuery('.main-slider .tp-banner').show().revolution({
+    if ($('.main-slider .tp-banner').length !== 0) {
+      $('.main-slider .tp-banner').show().revolution({
         dottedOverlay: 'yes',
         delay: 10000,
         startwidth: 1200,
@@ -453,62 +446,37 @@ export class HomeComponent {
     }
 
     //Tabs Box
-    if (jQuery('.tabs-box').length) {
-      jQuery('.tabs-box .tab-buttons .tab-btn').on('click', (e: { preventDefault: () => void; }) => {
+    if ($('.tabs-box').length) {
+      $('.tabs-box .tab-buttons .tab-btn').on('click', (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        var target = jQuery(jQuery(this).attr('data-tab'));
+        var target = $($(this).attr('data-tab'));
 
         target.parents('.tabs-box').find('.tab-buttons').find('.tab-btn').removeClass('active-btn');
-        jQuery(this).addClass('active-btn');
+        $(this).addClass('active-btn');
         target.parents('.tabs-box').find('.tabs-content').find('.tab').fadeOut(0);
         target.parents('.tabs-box').find('.tabs-content').find('.tab').removeClass('active-tab');
-        jQuery(target).fadeIn(300);
-        jQuery(target).addClass('active-tab');
+        $(target).fadeIn(300);
+        $(target).addClass('active-tab');
       });
     }
 
-
-    //Single Item Carousel
-    // if (jQuery('.single-item-carousel').length) {
-    //   jQuery('.single-item-carousel').owlCarousel({
-    //     loop: true,
-    //     margin: 0,
-    //     nav: true,
-    //     smartSpeed: 700,
-    //     autoplay: 5000,
-    //     navText: ['<span class="fa fa-angle-left"></span>', '<span class="fa fa-angle-right"></span>'],
-    //     responsive: {
-    //       0: {
-    //         items: 1
-    //       },
-    //       1024: {
-    //         items: 1
-    //       },
-    //       1200: {
-    //         items: 1
-    //       }
-    //     }
-    //   });
-    // }
-
-
     //Shop Tabs Box
-    if (jQuery('.shop-tabs-box').length) {
-      jQuery('.shop-tabs-box .tab-buttons .tab-btn').on('click', (e: { preventDefault: () => void; }) => {
+    if ($('.shop-tabs-box').length) {
+      $('.shop-tabs-box .tab-buttons .tab-btn').on('click', (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        var target = jQuery(jQuery(this).attr('data-tab'));
+        var target = $($(this).attr('data-tab'));
 
         target.parents('.shop-tabs-box').find('.tab-buttons').find('.tab-btn').removeClass('active-btn');
-        jQuery(this).addClass('active-btn');
+        $(this).addClass('active-btn');
         target.parents('.shop-tabs-box').find('.tabs-content').find('.shop-tab').removeClass('active-tab');
-        jQuery(target).addClass('active-tab');
+        $(target).addClass('active-tab');
       });
     }
 
 
     //Tabbed Shop Carousel
-    if (jQuery('.tabbed-shop-carousel').length) {
-      jQuery('.tabbed-shop-carousel').owlCarousel({
+    if ($('.tabbed-shop-carousel').length) {
+      $('.tabbed-shop-carousel').owlCarousel({
         loop: true,
         margin: 30,
         nav: true,
@@ -533,8 +501,8 @@ export class HomeComponent {
     }
 
     //Related Items Carousel
-    if (jQuery('.related-items-carousel').length) {
-      jQuery('.related-items-carousel').owlCarousel({
+    if ($('.related-items-carousel').length) {
+      $('.related-items-carousel').owlCarousel({
         loop: true,
         margin: 30,
         nav: true,
@@ -560,8 +528,8 @@ export class HomeComponent {
 
 
     //Sponsors Carousel
-    if (jQuery('.sponsors-carousel').length) {
-      jQuery('.sponsors-carousel').owlCarousel({
+    if ($('.sponsors-carousel').length) {
+      $('.sponsors-carousel').owlCarousel({
         loop: true,
         margin: 30,
         nav: true,
@@ -589,8 +557,8 @@ export class HomeComponent {
     }
 
     //Footer Gallery Widget Carousel
-    if (jQuery('.gallery-widget-carousel').length) {
-      jQuery('.gallery-widget-carousel').owlCarousel({
+    if ($('.gallery-widget-carousel').length) {
+      $('.gallery-widget-carousel').owlCarousel({
         loop: true,
         margin: 10,
         nav: true,
@@ -615,8 +583,8 @@ export class HomeComponent {
     }
 
     //Two Column Carousel
-    if (jQuery('.two-column-carousel').length) {
-      jQuery('.two-column-carousel').owlCarousel({
+    if ($('.two-column-carousel').length) {
+      $('.two-column-carousel').owlCarousel({
         loop: true,
         margin: 30,
         nav: true,
@@ -641,8 +609,8 @@ export class HomeComponent {
     }
 
     //Member Experties Carousel
-    if (jQuery('.experties-carousel').length) {
-      jQuery('.experties-carousel').owlCarousel({
+    if ($('.experties-carousel').length) {
+      $('.experties-carousel').owlCarousel({
         loop: true,
         margin: 30,
         nav: true,
@@ -668,8 +636,8 @@ export class HomeComponent {
 
 
     //LightBox / Fancybox
-    if (jQuery('.lightbox-image').length) {
-      jQuery('.lightbox-image').fancybox({
+    if ($('.lightbox-image').length) {
+      $('.lightbox-image').fancybox({
         openEffect: 'fade',
         closeEffect: 'fade',
         helpers: {
@@ -679,83 +647,13 @@ export class HomeComponent {
     }
 
     //Mixitup Gallery
-    if (jQuery('.filter-list').length) {
-      jQuery('.filter-list').mixItUp({});
+    if ($('.filter-list').length) {
+      $('.filter-list').mixItUp({});
     }
 
-
-    //Sortable Masonary with Filters
-    // const enableMasonry = () => {
-    //   if (jQuery('.sortable-masonry').length) {
-
-    //     var winDow = jQuery(window);
-    //     // Needed variables
-    //     var jQuerycontainer = jQuery('.sortable-masonry .items-container');
-    //     var jQueryfilter = jQuery('.filter-btns');
-
-    //     jQuerycontainer.isotope({
-    //       filter: '*',
-    //       masonry: {
-    //         columnWidth: 0
-    //       },
-    //       animationOptions: {
-    //         duration: 1000,
-    //         easing: 'linear'
-    //       }
-    //     });
-
-
-    //     // Isotope Filter
-    //     // jQueryfilter.find('li').on('click', () => {
-    //     //   var selector = jQuery(this).attr('data-filter');
-
-    //     //   try {
-    //     //     jQuerycontainer.isotope({
-    //     //       filter: selector,
-    //     //       animationOptions: {
-    //     //         duration: 1000,
-    //     //         easing: 'linear',
-    //     //         queue: false
-    //     //       }
-    //     //     });
-    //     //   } catch (err) {
-
-    //     //   }
-    //     //   return false;
-    //     // });
-
-
-    //     // winDow.bind('resize', function () {
-    //     //   var selector = jQueryfilter.find('li.active').attr('data-filter');
-
-    //     //   jQuerycontainer.isotope({
-    //     //     filter: selector,
-    //     //     animationOptions: {
-    //     //       duration: 1000,
-    //     //       easing: 'linear',
-    //     //       queue: false
-    //     //     }
-    //     //   });
-    //     // });
-
-
-    //     var filterItemA = jQuery('.filter-btns li');
-
-    //     filterItemA.on('click', () => {
-    //       var jQuerythis = jQuery(this);
-    //       if (!jQuerythis.hasClass('active')) {
-    //         filterItemA.removeClass('active');
-    //         jQuerythis.addClass('active');
-    //       }
-    //     });
-    //   }
-    // }
-
-    // enableMasonry();
-
     //Jquery Spinner / Quantity Spinner
-    if (jQuery('.quantity-spinner').length) {
-      jQuery("input.quantity-spinner").TouchSpin({
+    if ($('.quantity-spinner').length) {
+      $("input.quantity-spinner").TouchSpin({
         verticalbuttons: true
       });
     }
@@ -763,27 +661,27 @@ export class HomeComponent {
 
     // Fact Counter
     const factCounter = () => {
-      if (jQuery('.fact-counter').length) {
-        jQuery('.fact-counter .counter-column.animated').each(() => {
+      if ($('.fact-counter').length) {
+        $('.fact-counter .counter-column.animated').each(() => {
 
-          var jQueryt = jQuery(this),
-            n = jQueryt.find(".count-text").attr("data-stop"),
-            r = parseInt(jQueryt.find(".count-text").attr("data-speed"), 10);
+          var $t = $(this),
+            n = $t.find(".count-text").attr("data-stop"),
+            r = parseInt($t.find(".count-text").attr("data-speed"), 10);
 
-          if (!jQueryt.hasClass("counted")) {
-            jQueryt.addClass("counted");
-            jQuery({
-              countNum: jQueryt.find(".count-text").text()
+          if (!$t.hasClass("counted")) {
+            $t.addClass("counted");
+            $({
+              countNum: $t.find(".count-text").text()
             }).animate({
               countNum: n
             }, {
               duration: r,
               easing: "linear",
               step: function () {
-                jQueryt.find(".count-text").text(Math.floor(this.countNum));
+                $t.find(".count-text").text(Math.floor(this.countNum));
               },
               complete: function () {
-                jQueryt.find(".count-text").text(this.countNum);
+                $t.find(".count-text").text(this.countNum);
               }
             });
           }
@@ -793,24 +691,24 @@ export class HomeComponent {
     }
 
     //Product Tabs
-    if (jQuery('.prod-tabs .tab-btn').length) {
-      jQuery('.prod-tabs .tab-btn').on('click', (e: { preventDefault: () => void; }) => {
+    if ($('.prod-tabs .tab-btn').length) {
+      $('.prod-tabs .tab-btn').on('click', (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        var target = jQuery(jQuery(this).attr('href'));
-        jQuery('.prod-tabs .tab-btn').removeClass('active-btn');
-        jQuery(this).addClass('active-btn');
-        jQuery('.prod-tabs .tab').fadeOut(0);
-        jQuery('.prod-tabs .tab').removeClass('active-tab');
-        jQuery(target).fadeIn(500);
-        jQuery(target).addClass('active-tab');
+        var target = $($(this).attr('href'));
+        $('.prod-tabs .tab-btn').removeClass('active-btn');
+        $(this).addClass('active-btn');
+        $('.prod-tabs .tab').fadeOut(0);
+        $('.prod-tabs .tab').removeClass('active-tab');
+        $(target).fadeIn(500);
+        $(target).addClass('active-tab');
       });
 
     }
 
 
     //Contact Form Validation
-    if (jQuery('#contact-form').length) {
-      jQuery('#contact-form').validate({
+    if ($('#contact-form').length) {
+      $('#contact-form').validate({
         rules: {
           username: {
             required: true
@@ -834,55 +732,20 @@ export class HomeComponent {
 
 
     // Scroll to a Specific Div
-    if (jQuery('.scroll-to-target').length) {
-      jQuery(".scroll-to-target").on('click', () => {
-        var target = jQuery(this).attr('data-target');
+    if ($('.scroll-to-target').length) {
+      $(".scroll-to-target").on('click', () => {
+        var target = $(this).attr('data-target');
         // animate
-        jQuery('html, body').animate({
-          scrollTop: jQuery(target).offset().top
+        $('html, body').animate({
+          scrollTop: $(target).offset().top
         }, 1000);
 
       });
     }
 
-
-    // Elements Animation
-    // if (jQuery('.wow').length) {
-    //   var wow: any = new wow(
-    //     {
-    //       boxClass: 'wow',      // animated element css class (default is wow)
-    //       animateClass: 'animated', // animation css class (default is animated)
-    //       offset: 0,          // distance to the element when triggering the animation (default is 0)
-    //       mobile: true,       // trigger animations on mobile devices (default is true)
-    //       live: true       // act on asynchronously loaded content (default is true)
-    //     }
-    //   );
-    //   wow.init();
-    // }
-
-
-    /* ==========================================================================
-       When document is Scrollig, do
-       ========================================================================== */
-
-    jQuery(window).on('scroll', function () {
+    $(window).on('scroll', function () {
       headerStyle();
       factCounter();
     });
-
-
-    /* ==========================================================================
-       When window is Resized, do
-       ========================================================================== */
-
-    // jQuery(window).on('resize', function () {
-    //   enableMasonry();
-    // });
-
-    /* ==========================================================================
-       When document is loading, do
-       ========================================================================== */
-
-    // jQuery(this['rev_slider'].nativeElement).show().revolution(RevSliderConfig);
   }
 }

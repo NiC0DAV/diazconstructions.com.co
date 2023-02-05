@@ -57,6 +57,6 @@ export class UserService {
   }
   getReviews(): Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.get(this.url + 'fetchReviews/', { headers: headers });
+    return this._http.get(this.url + 'fetchReviews', { headers: headers });
   }
 }

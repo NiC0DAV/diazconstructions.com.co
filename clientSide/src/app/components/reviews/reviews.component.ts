@@ -28,7 +28,7 @@ export class ReviewsComponent {
   }
 
   receiveData($event: any) {
-    console.log($event);
+
     this.rating = $event;
   }
 
@@ -40,7 +40,6 @@ export class ReviewsComponent {
           icon: 'success',
           title: response.message
         });
-        console.log(response.data);
       }, (error: any) => {
         this.Toast.fire({
           icon: 'error',
