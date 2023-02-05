@@ -1,3 +1,3 @@
 export var global = {
-    url: 'http://api.diazconstructions.com.co/'
+    url: 'https://api.diazconstructions.com.co/'
 }

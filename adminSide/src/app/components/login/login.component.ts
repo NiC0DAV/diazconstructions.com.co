@@ -38,9 +38,9 @@ export class LoginComponent {
   }
   ngOnInit(): void {
     if (this.token) {
-      this._router.navigate(['']);
+      this._router.navigate(['/']);
     }else{
-      this._router.navigate(['login']);
+      this._router.navigate(['/login']);
     }
   }
 

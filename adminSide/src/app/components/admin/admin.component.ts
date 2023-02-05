@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
@@ -95,17 +95,19 @@ export class AdminComponent {
 
   ngOnInit() {
     let decodedToken = this.helper.decodeToken(this.token);
-    this.userName = decodedToken.name;
+    if(decodedToken){
+      this.userName = decodedToken.name;
+    }
     if (this.token && decodedToken.rol == "2" && decodedToken.status == "2") {
       if (this.helper.isTokenExpired(this.token)) {
         localStorage.clear();
-        this._router.navigate(['login']);
+        this._router.navigate(['/login']);
       } else {
         this.sessionId = decodedToken.sub;
-        this._router.navigate(['']);
+        this._router.navigate(['/']);
       }
     } else {
-      this._router.navigate(['login']);
+      this._router.navigate(['/login']);
     }
   }
 
