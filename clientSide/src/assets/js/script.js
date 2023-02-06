@@ -127,9 +127,9 @@ $(window).on('load', function() {
 	
 
 	//Revolution Slider
-	if(jQuery('.main-slider .tp-banner').length !== 0){
+	if($('.main-slider .tp-banner').length !== 0){
 		// alert('');
-		jQuery('.main-slider .tp-banner').show().revolution({
+		$('.main-slider .tp-banner').show().revolution({
 		dottedOverlay:'yes',
 		  delay:10000,
 		  startwidth:1200,
@@ -201,7 +201,6 @@ $(window).on('load', function() {
 		  videoJsPath:"",
 		  fullScreenOffsetContainer: ""
 	  });
-
 	}
 
 	//Tabs Box
