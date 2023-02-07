@@ -39,7 +39,7 @@ export class FooterComponent {
         }
 
         this.footerSection = this.webContent.footerSection;
-        console.log(this.footerSection);
+        // console.log(this.footerSection);
       }
     );
   }
@@ -48,13 +48,13 @@ export class FooterComponent {
     if(data.valid){
       this._userService.prospectRegister(data.value).subscribe(
         ( response: any ) => {
-          console.log(response);
+          // console.log(response);
           this.Toast.fire({
             icon: 'success',
             title: response.message
           });
         }, ( error: any ) => {
-          console.log(error);
+          // console.log(error);
           this.Toast.fire({
             icon: 'error',
             title: error.error.message

@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { UserService } from 'src/app/services/user.service';
@@ -60,7 +60,7 @@ export class HomeComponent {
   public category: string;
   public elementsQuantity: number = 3;
 
-  constructor(private _userService: UserService,private _router: Router, private renderer: Renderer2) {
+  constructor(private _userService: UserService,private _router: Router, private element: ElementRef) {
     this.Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -97,7 +97,6 @@ export class HomeComponent {
         this.welcomeSection = this.webContent.welcomeSection;
         this.servicesSection = this.webContent.servicesSection;
         this.characteristicsSection = this.webContent.CharacteristicsSection;
-        this.loader = false;
       }, (error: any) => {
         this._router.navigate(['/something-went-wrong']);
       }
@@ -124,6 +123,7 @@ export class HomeComponent {
   }
 
   getImages() {
+    this.loader = true;
     this._userService.getImages().subscribe(
       (response: any) => {
         this.images = response.data;
@@ -279,6 +279,7 @@ export class HomeComponent {
         },
       ],
     });
+
     //Update Header Style and Scroll to Top
     function headerStyle() {
       if ($('.main-header').length) {
@@ -669,5 +670,85 @@ export class HomeComponent {
       headerStyle();
       factCounter();
     });
+
+    setTimeout(() => {
+      if($('.main-slider .tp-banner').length !== 0){
+        $('.main-slider .tp-banner').show().revolution({
+          dottedOverlay:'yes',
+          delay:10000,
+          startwidth:1200,
+          startheight:730,
+          hideThumbs:600,
+  
+          thumbWidth:80,
+          thumbHeight:50,
+          thumbAmount:5,
+  
+          navigationType:"bullet",
+          navigationArrows:"0",
+          navigationStyle:"preview3",
+  
+          touchenabled:"on",
+          onHoverStop:"off",
+  
+          swipe_velocity: 0.7,
+          swipe_min_touches: 1,
+          swipe_max_touches: 1,
+          drag_block_vertical: false,
+  
+          parallax:"mouse",
+          parallaxBgFreeze:"on",
+          parallaxLevels:[7,4,3,2,5,4,3,2,1,0],
+  
+          keyboardNavigation:"off",
+  
+          navigationHAlign:"center",
+          navigationVAlign:"bottom",
+          navigationHOffset:0,
+          navigationVOffset:40,
+  
+          soloArrowLeftHalign:"left",
+          soloArrowLeftValign:"center",
+          soloArrowLeftHOffset:20,
+          soloArrowLeftVOffset:0,
+  
+          soloArrowRightHalign:"right",
+          soloArrowRightValign:"center",
+          soloArrowRightHOffset:20,
+          soloArrowRightVOffset:0,
+  
+          shadow:0,
+          fullWidth:"on",
+          fullScreen:"off",
+  
+          spinner:"spinner4",
+  
+          stopLoop:"off",
+          stopAfterLoops:-1,
+          stopAtSlide:-1,
+  
+          shuffle:"off",
+  
+          autoHeight:"off",
+          forceFullWidth:"on",
+  
+          hideThumbsOnMobile:"on",
+          hideNavDelayOnMobile:1500,
+          hideBulletsOnMobile:"on",
+          hideArrowsOnMobile:"on",
+          hideThumbsUnderResolution:0,
+  
+          hideSliderAtLimit:0,
+          hideCaptionAtLimit:0,
+          hideAllCaptionAtLilmit:0,
+          startWithSlide:0,
+          videoJsPath:"",
+          fullScreenOffsetContainer: ""
+        });
+      }  
+      this.loader = false;
+
+    }, 500);
+
   }
 }

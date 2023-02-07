@@ -67,15 +67,17 @@
                                             <br>
                                         </div>
                                     </div>
-                                    <div class="carousel-item" *ngFor="let image of activeGallery;">
-                                        <div class="text-center">
-                                            <img src="https://api.diazconstructions.com.co/public/storage/images/{{image.pathImage}}" alt="{{image.shortDescription}}"
-                                                class="rounded-circle thumb-xl img-thumbnail mb-1">
-                                            <h5>{{image.imageTitle}}</h5>
-                                            <p class="font-12 text-muted">{{image.shortDescription}}</p>
-                                            <p class="mb-0 text-muted">{{image.imageDescription}}</p>
+                                    <ng-container *ngIf="activeGallery">
+                                        <div class="carousel-item" *ngFor="let image of activeGallery;">
+                                            <div class="text-center">
+                                                <img src="" src="https://api.diazconstructions.com.co/public/storage/images/{{image.pathImage}}" alt="{{image && image.shortDescription ? image.shortDescription : 'Home Remodeling'}}"
+                                                    class="rounded-circle thumb-xl img-thumbnail mb-1">
+                                                <h5>{{image.imageTitle}}</h5>
+                                                <p class="font-12 text-muted">{{image.shortDescription}}</p>
+                                                <p class="mb-0 text-muted">{{image.imageDescription}}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </ng-container>
                                 </div>
                                 <a class="carousel-control-prev" href="#carousel_best_saler" role="button"
                                     data-slide="prev">
@@ -1233,7 +1235,7 @@
                                                                                 <img [src]="imgSelected" class="img-thumbnail" alt="Rounded image" style="max-width: 350px;">
                                                                             </div>
                                                                             <div class="col-md-12 text-center">
-                                                                                <ng-container *ngIf="imageById.sliderStatus == 0 ">
+                                                                                <ng-container *ngIf="imageById.sliderStatus == 0">
                                                                                     <button type="button" class="btn btn-warning" id="slider" (click)="imageById.sliderStatus = 1">Show on Slider</button>
                                                                                 </ng-container>
                                                                                 <ng-container *ngIf="imageById.sliderStatus == 1">

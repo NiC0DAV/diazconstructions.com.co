@@ -1,12 +1,13 @@
 <div class="gallery-lightbox-container">
-    <ng-container *ngIf="shownElements <= 3">
+    <ng-container *ngIf="screenWidth < 1040">
         <div class="gallery">
             <div class="gallery-img" *ngFor="let item of galleryData; let i = index;">
                 <img (click)="onPreviewImage(i)" src="https://api.diazconstructions.com.co/public/storage/images/{{item.pathImage}}" alt="{{item.shortDescription}}">
             </div>
         </div>
     </ng-container>
-    <ng-container *ngIf="shownElements > 3">
+    <!-- <h1> {{screenWidth}}</h1> -->
+    <ng-container *ngIf="screenWidth >= 1040">
         <div class="galleryPlus">
             <div class="gallery-img" style="margin-top: 15px;" *ngFor="let item of galleryData; let i = index;">
                 <img (click)="onPreviewImage(i)" src="https://api.diazconstructions.com.co/public/storage/images/{{item.pathImage}}" alt="{{item.shortDescription}}">
@@ -15,7 +16,7 @@
     </ng-container>
 
     <div *ngIf="showMask" class="lightbox">
-        <span *ngIf="showCount" class="count">{{currentIndex + 1}}/{{totalImageCount}}</span>
+        <!-- <span *ngIf="showCount" class="count">{{currentIndex + 1}}/{{totalImageCount}}</span> -->
         <button *ngIf="previewImage" class="close-btn" (click)="onClosePreview()">
             <i class="far fa-times"></i>
         </button>

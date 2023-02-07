@@ -26,13 +26,25 @@
   transition: opacity 0.4s ease-in-out;
   }
 
+.breakpointSlider{
+  max-height: 730px !important;
+}
+
+
 @media screen and (max-width: 1024px) {
   .gallery-section .filters .icon-box {
     display: contents;
   }
   .gallery-section .filters .filter-tabs{
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     padding-left: 0px;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .med-service-col{
+    padding-left: 3em;
+    padding-top: 3em;
   }
 }

@@ -134,6 +134,8 @@ export class AdminComponent {
     this._informationService.fetchWebData().subscribe(
       (response: any) => {
         this.contents = response.data;
+        this.contents = this.contents.filter(n => n);
+        // console.log(this.contents);
       }
     );
   }
@@ -451,6 +453,8 @@ export class AdminComponent {
     this._categoryService.fetchCategories().subscribe(
       (response: any) => {
         this.categories = response.data;
+        this.categories = this.categories.filter(n => n);
+
       }, (error: any) => {
         this.Toast.fire({
           icon: 'error',
@@ -531,7 +535,7 @@ export class AdminComponent {
       console.log(this.file);
       console.log(data);
       this._imageService.imageRegister(this.token, data, this.file).subscribe(
-        (response) => {
+        (response: any) => {
           this.action = '';
           this.fetchImages();
           this.Toast.fire({
@@ -603,7 +607,8 @@ export class AdminComponent {
             this.activeGallery[clave] = this.images[clave];
           }
         }
-       this.galleryQuantity = Object.keys(this.activeGallery).length;
+        this.activeGallery = this.activeGallery.filter(n => n);
+        this.galleryQuantity = Object.keys(this.activeGallery).length;
       }
     );
   }
@@ -614,7 +619,7 @@ export class AdminComponent {
         (response: any) => {
           this.action = 'editImage';
           this.imageById = response.data[0];
-          console.log(this.imageById);
+          // console.log(this.imageById);
           this.imgSelected = 'https://api.diazconstructions.com.co/public/storage/images/'+this.imageById.pathImage;
         },(error: any) => {
           this.Toast.fire({
@@ -670,6 +675,8 @@ export class AdminComponent {
     this._prospectService.getProspects(this.token).subscribe(
       (response: any) =>{
         this.prospects = response.data;
+        this.prospects = this.prospects.filter(n => n);
+
       }
     );
   }
@@ -714,8 +721,10 @@ export class AdminComponent {
             this.usersList[clave] = this.users[clave];
           }
         }
+        this.usersList = this.usersList.filter(n => n);
 
-        console.log(this.usersList);
+
+        // console.log(this.usersList);
       }, (error: any) => {
         this.Toast.fire({
           icon: 'error',
@@ -803,7 +812,7 @@ export class AdminComponent {
 
   editUser(id: any, data: any){
     data.value.status= this.userStat;
-    console.log(data.value);
+    // console.log(data.value);
     if(data.valid){
       this._userService.editUser(this.token, id, data.value).subscribe(
         (response: any) => {
@@ -828,7 +837,7 @@ export class AdminComponent {
       (response: any) => {
         this.reviewsList = [];
         this.reviewsList = response.data;
-        console.log(this.reviewsList);
+        // console.log(this.reviewsList);
 
         for (let clave in this.reviewsList) {
           let val = this.reviewsList[clave];
@@ -836,6 +845,7 @@ export class AdminComponent {
             this.activeReviews[clave] = this.reviewsList[clave];
           }
         }
+        this.activeReviews = this.activeReviews.filter(n => n);
         this.reviewsQuantity = Object.keys(this.activeReviews).length;
 
       },(error: any) => {

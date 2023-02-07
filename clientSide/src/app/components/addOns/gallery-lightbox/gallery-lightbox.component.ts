@@ -43,19 +43,25 @@ export class GalleryLightboxComponent {
   public currentIndex: number = 0;
   public controls: boolean = true;
   public totalImageCount: number = 0;
-
-  constructor() {}
-
-  ngOnInit(): void{
-    this.totalImageCount = this.galleryData.length;
+  public screenWidth: any;  
+  public screenHeight: any;  
+    
+  constructor() {
+    this.screenWidth = window.innerWidth;  
+    this.screenHeight = window.innerHeight; 
+    // console.log(this.screenWidth); 
   }
+
+  // ngAfterViewInit(): void{
+  //   this.totalImageCount = this.galleryData.length;
+  // }
 
   onPreviewImage(index: number): void{
     this.showMask = true;
     this.previewImage = true;
     this.currentIndex = index;
     this.currentLightboxImage = this.galleryData[index];
-    console.log(this.currentLightboxImage.shortDescription);
+    // console.log(this.currentLightboxImage.shortDescription);
   }
 
   onAnimationEnd(event: AnimationEvent){

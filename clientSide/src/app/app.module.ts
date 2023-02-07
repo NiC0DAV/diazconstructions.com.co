@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FormsModule } from '@angular/forms';
-import { LightgalleryModule } from 'lightgallery/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
@@ -36,8 +35,7 @@ import { GalleryLightboxComponent } from './components/addOns/gallery-lightbox/g
     BrowserAnimationsModule,
     CarouselModule,
     HttpClientModule,
-    FormsModule,
-    LightgalleryModule,
+    FormsModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

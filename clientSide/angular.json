@@ -33,13 +33,12 @@
               "src/assets/css/revolution-slider.css",
               "src/assets/css/error-page.css",
               "src/assets/css/error-page-responsive.css",
-              "src/assets/css/responsive.css",
+              "src/assets/css/responsive.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/js/jquery.js"
+              "src/assets/js/jquery.js",
+              // "node_modules/jquery/dist/jquery.min.js",
               "src/assets/js/revolution.min.js",
-              "src/assets/js/script.js",
               "src/assets/js/bootstrap.min.js",
               "src/assets/js/jquery.mCustomScrollbar.concat.min.js",
               "src/assets/js/jquery.fancybox.pack.js",
@@ -47,8 +46,8 @@
               "src/assets/js/isotope.js",
               "src/assets/js/owl.js",
               "src/assets/js/wow.js",
-              "src/assets/js/jquery-3.5.1.min.js",
               "src/assets/js/jquery.parallaxmouse.min.js",
+              "src/assets/js/script.js"
             ]
           },
           "configurations": {
@@ -117,13 +116,12 @@
               "src/assets/css/revolution-slider.css",
               "src/assets/css/error-page.css",
               "src/assets/css/error-page-responsive.css",
-              "src/assets/css/responsive.css",
+              "src/assets/css/responsive.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/js/jquery.js"
+              "src/assets/js/jquery.js",
+              // "node_modules/jquery/dist/jquery.min.js",
               "src/assets/js/revolution.min.js",
-              "src/assets/js/script.js",
               "src/assets/js/bootstrap.min.js",
               "src/assets/js/jquery.mCustomScrollbar.concat.min.js",
               "src/assets/js/jquery.fancybox.pack.js",
@@ -131,8 +129,8 @@
               "src/assets/js/isotope.js",
               "src/assets/js/owl.js",
               "src/assets/js/wow.js",
-              "src/assets/js/jquery-3.5.1.min.js",
               "src/assets/js/jquery.parallaxmouse.min.js",
+              "src/assets/js/script.js"
             ]
           }
         }
