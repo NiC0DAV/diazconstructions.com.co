@@ -101,25 +101,25 @@
           </div>
 
           <!--Sortable Masonry-->
-          <div class="sortable-masonry">
+            <div class="sortable-masonry">
               <!--Filter-->
-              <div class="filters text-center">
-                  <div class="icon-box"><span class="fa fa-picture-o"></span></div>
+                <div class="filters text-center">
+                    <div class="icon-box"><span class="fa fa-picture-o"></span></div>
 
-                  <ul class="filter-tabs filter-btns clearfix">
-                      <li class="filter"><a (click)="filter('all')">All Projects</a></li>
-                      <li class="filter" *ngFor="let category of categories"><a
+                    <ul class="filter-tabs filter-btns clearfix">
+                        <li class="filter"><a (click)="filter('all')">All Projects</a></li>
+                        <li class="filter" *ngFor="let category of categories"><a
                           (click)="filter(category.categoryName)">{{category.categoryName}}</a></li>
-                  </ul>
-              </div>
+                    </ul>
+                </div>
 
-              <div class="text-center" >
-                  <div class="container-fluid gallery">
-                      <app-gallery-lightbox [galleryData]="this.store.refined" [showCount]="true" [shownElements]="elementsQuantity"></app-gallery-lightbox>
-                  </div>
-              </div>
+                <div class="text-center" >
+                    <div class="container-fluid gallery">
+                        <app-gallery-lightbox [galleryData]="this.store.refined" [showCount]="true" [shownElements]="elementsQuantity"></app-gallery-lightbox>
+                    </div>
+                </div>
 
-          </div>
+            </div>
 
       </div>
 

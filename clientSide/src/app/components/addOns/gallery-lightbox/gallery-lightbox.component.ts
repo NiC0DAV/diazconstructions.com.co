@@ -43,13 +43,20 @@ export class GalleryLightboxComponent {
   public currentIndex: number = 0;
   public controls: boolean = true;
   public totalImageCount: number = 0;
-  public screenWidth: any;  
-  public screenHeight: any;  
-    
+  public screenWidth: any;
+  public screenHeight: any;
+  // public p: number = 1;
+  public page = 1;
+  public pageSize = 6;
+
+
   constructor() {
-    this.screenWidth = window.innerWidth;  
-    this.screenHeight = window.innerHeight; 
-    // console.log(this.screenWidth); 
+    this.screenWidth = window.innerWidth;
+    this.screenHeight = window.innerHeight;
+    if(this.screenWidth < 700){
+      this.pageSize = 3;
+    }
+    // console.log(this.screenWidth);
   }
 
   // ngAfterViewInit(): void{
@@ -89,5 +96,5 @@ export class GalleryLightboxComponent {
     }
     this.currentLightboxImage = this.galleryData[this.currentIndex];
   }
-  
+
 }
