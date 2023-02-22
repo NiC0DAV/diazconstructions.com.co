@@ -79,7 +79,7 @@
   </div>
 </section>
 
-<div> 
+<div>
     <a href="#quotation" class="float-btn">
         <div id="popcorn" aria-describedby="tooltip">
             <img src="assets/images/icons/price-list.png" class="img" alt="">
@@ -92,39 +92,7 @@
 </div>
 
 <!--Gallery Section-->
-<section class="gallery-section" id="projects">
-    <div class="auto-container">
-
-          <!--Section Title-->
-          <div class="sec-title-four">
-              <h2>Our Projects</h2>
-          </div>
-
-          <!--Sortable Masonry-->
-            <div class="sortable-masonry">
-              <!--Filter-->
-                <div class="filters text-center">
-                    <div class="icon-box"><span class="fa fa-picture-o"></span></div>
-
-                    <ul class="filter-tabs filter-btns clearfix">
-                        <li class="filter"><a (click)="filter('all')">All Projects</a></li>
-                        <li class="filter" *ngFor="let category of categories"><a
-                          (click)="filter(category.categoryName)">{{category.categoryName}}</a></li>
-                    </ul>
-                </div>
-
-                <div class="text-center" >
-                    <div class="container-fluid gallery">
-                        <app-gallery-lightbox [galleryData]="this.store.refined" [showCount]="true" [shownElements]="elementsQuantity"></app-gallery-lightbox>
-                    </div>
-                </div>
-
-            </div>
-
-      </div>
-
-
-</section>
+<app-gallery-lightbox [galleryData]="this.store.refined" [showCount]="true" [shownElements]="elementsQuantity"></app-gallery-lightbox>
 
 <!--welcome-section-->
 <section class="welcome-section" id="welcome-section">
@@ -424,28 +392,28 @@
                     <div class="sub-title">Request for</div>
                     <h2>Free Quotation</h2>
                 </div>
-  
+
                 <!--form-box-->
                 <div class="form-box default-form wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="contact-form default-form">
                         <form #prospectForm="ngForm" (ngSubmit)="prospectsForm(prospectForm);">
                             <div class="row clearfix">
-  
+
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                     <input type="text" placeholder="Your Name *" id="name" name="name" #name="ngModel"
                                         ngModel required>
                                 </div>
-  
+
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                     <input type="email" placeholder="Your Mail *" id="email" name="email"
                                         #mail="ngModel" ngModel required>
                                 </div>
-  
+
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" placeholder="Phone Number" id="phoneNumber" name="phoneNumber"
                                         #phoneNumber="ngModel" ngModel>
                                 </div>
-  
+
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                     <textarea placeholder="Message *" id="message" name="message" #message="ngModel"
                                         ngModel></textarea>
@@ -457,7 +425,7 @@
                         </form>
                     </div>
                 </div>
-  
+
             </div>
           </section>
       </div>

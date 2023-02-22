@@ -1,11 +1,14 @@
-:host{
-    display: block;
-    text-align: center;
+.grid-item {
+  text-align: center;
+  max-width: min(85%, 22em);
+}
+
+.grid-image {
+  aspect-ratio: 1;
+  object-fit: cover;
 }
 
 .gallery-lightbox-container{
-    position: relative;
-    display: inline-block;
     padding: 25px;
 }
 
@@ -128,10 +131,6 @@
 
 .gallery-lightbox-container .lightbox-img{
   max-width: 75em;
-}
-
-.grid-item {
-  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1024px) {
