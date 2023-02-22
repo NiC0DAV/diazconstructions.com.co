@@ -79,7 +79,7 @@
   </div>
 </section>
 
-<div>
+<div style="position: sticky;z-index: 1000;">
     <a href="#quotation" class="float-btn">
         <div id="popcorn" aria-describedby="tooltip">
             <img src="assets/images/icons/price-list.png" class="img" alt="">
@@ -91,9 +91,10 @@
     </div>
 </div>
 
-<!--Gallery Section-->
-<app-gallery-lightbox [galleryData]="this.store.refined" [showCount]="true" [shownElements]="elementsQuantity"></app-gallery-lightbox>
-
+<section id="projects">
+    <!--Gallery Section-->
+    <app-gallery-lightbox [galleryData]="this.store.refined" [showCount]="true" [shownElements]="elementsQuantity"></app-gallery-lightbox>
+</section>
 <!--welcome-section-->
 <section class="welcome-section" id="welcome-section">
   <div class="auto-container">
@@ -306,11 +307,11 @@
 <!--call-to-action-->
 <section class="call-to-action" style="background-image:url(assets/images/background/first.jpg);">
   <div class="auto-container">
-      <div class="row">
+      <div class="row" style="justify-content: center;">
           <div class="text">Hey! have we worked for you before?</div>
           <h2>Would you like to tell others about your experience with Diaz Constructions?</h2>
 
-          <a class="theme-btn btn-style-one" target="_blank" href="{{NOMBRE_HOST}}#/leave-review">Leave us a Review!</a>
+          <a class="theme-btn btn-style-one col-md-3" target="_blank" href="{{NOMBRE_HOST}}#/leave-review">Leave us a Review!</a>
           <!-- <a class="theme-btn btn-style-two" href="#contact-us">Contact Us</a> -->
 
       </div>
@@ -385,8 +386,8 @@
               </div>
           </div>
 
-          <section id="quotation">
-            <div class="column form-column col-md-6 col-sm-12">
+          <section id="quotation" class="col-md-6 col-sm-12">
+            <div class="column form-column">
                 <!--sec-title-three-->
                 <div class="sec-title-three">
                     <div class="sub-title">Request for</div>

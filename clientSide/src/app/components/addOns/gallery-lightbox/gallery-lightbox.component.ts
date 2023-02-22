@@ -127,7 +127,7 @@ export class GalleryLightboxComponent
       // Simulate a call to an API
       setTimeout(() => {
         this.gridShuffle.layout();
-      }, 1000);
+      }, 2000);
     });
 
     // This is a hacky way of doing this, as the content has not been
@@ -137,7 +137,7 @@ export class GalleryLightboxComponent
     // second, but it could need more for slower connections.
     setTimeout(() => {
       this.gridShuffle.layout();
-    }, 1000);
+    }, 2000);
   }
 
   // If the shuffle layout couldn't load in time, rerender when the user moves
