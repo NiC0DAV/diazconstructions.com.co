@@ -28,7 +28,7 @@ import { GalleryLightboxComponent } from './components/addOns/gallery-lightbox/g
     NavbarComponent,
     StarReviewComponent,
     StarViewerComponent,
-    GalleryLightboxComponent
+    GalleryLightboxComponent,
   ],
   imports: [
     BrowserModule,
